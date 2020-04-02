@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "629692011551",
+    "firebase_url": "https://restly-93353.firebaseio.com",
+    "project_id": "restly-93353",
+    "storage_bucket": "restly-93353.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629692011551:android:2cab54383d5da38542312a",
+        "android_client_info": {
+          "package_name": "com.fer.ppj.restly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629692011551-6930r7uhls0dg1nqp7ooe1q8g1mervo3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdcUZNukxSfjwlB9bOQBchYTWG05gxTZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629692011551-6930r7uhls0dg1nqp7ooe1q8g1mervo3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
