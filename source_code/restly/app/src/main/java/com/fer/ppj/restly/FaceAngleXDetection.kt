@@ -10,13 +10,14 @@ import com.google.firebase.ml.vision.face.FirebaseVisionFace
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions
 
 
-class FaceDetection(
+class FaceAngleXDetection(
     private val facesDetected: (faces: List<FirebaseVisionFace>) -> Unit
 ) : ImageAnalysis.Analyzer {
 
     override fun analyze(image: ImageProxy, rotationDegrees: Int) {
         val options = FirebaseVisionFaceDetectorOptions.Builder()
             .setPerformanceMode(FirebaseVisionFaceDetectorOptions.FAST)
+            .setContourMode(FirebaseVisionFaceDetectorOptions.ALL_CONTOURS)
             .build()
 
         val detector = FirebaseVision.getInstance().getVisionFaceDetector(options)
