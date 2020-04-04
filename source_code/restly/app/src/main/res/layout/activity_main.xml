@@ -2,12 +2,51 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <Chronometer
+        android:id="@+id/chrono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="256dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="28dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#092FEC"
+        android:textSize="36sp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:id="@+id/startExercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_below="@id/chrono"
         android:layout_centerHorizontal="true"
         android:text="Pokreni vježbe" />
+    <Button
+        android:id="@+id/startChrono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/startExercise"
+        android:layout_centerHorizontal="true"
+        android:text="Pokreni timer" />
+    <Button
+        android:id="@+id/stopChrono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/startChrono"
+        android:layout_centerHorizontal="true"
+        android:text="Pauziraj timer"
+        android:visibility="gone"/>
+    <Button
+        android:id="@+id/resetChrono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stopChrono"
+        android:layout_centerHorizontal="true"
+        android:text="Resetiraj timer"
+        android:visibility="gone"/>
 
 </RelativeLayout>
