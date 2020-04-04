@@ -48,5 +48,16 @@
         android:layout_centerHorizontal="true"
         android:text="Resetiraj timer"
         android:visibility="gone"/>
+    <Button
+        android:id="@+id/viewData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/resetChrono"
+        android:layout_centerHorizontal="true"
+        android:text="Pogledaj vježbe" />
+    <TextView
+        android:id="@+id/sessionLogData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
