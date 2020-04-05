@@ -1,4 +1,4 @@
-package com.fer.ppj.restly
+package com.fer.ppj.restly.db
 
 import android.content.ContentValues
 import android.content.Context
@@ -14,7 +14,8 @@ val COL_EXERCISE_TIME = "exercise_time"
 val COL_TOTAL_TIME = "total_time"
 val COL_DATE = "date"
 
-class DbHandler(var context: Context?) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1) {
+class DbHandler(var context: Context?) : SQLiteOpenHelper(context,
+    DATABASE_NAME, null, 1) {
     override fun onCreate(db: SQLiteDatabase?) {
         val createTable =
             "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -37,8 +38,8 @@ class DbHandler(var context: Context?) : SQLiteOpenHelper(context, DATABASE_NAME
         var result = db.insert(TABLE_NAME, null, contentValues)
         if(result == -1.toLong())
             Toast.makeText(context, "Failed inserting to db", Toast.LENGTH_SHORT).show()
-        else Toast.makeText(context, "Succeeded inserting to db", Toast.LENGTH_SHORT).show()
-    }
+        else Toast.makeText(context, "Succeeded inserting to db: " + session.total_time + "s", Toast.LENGTH_SHORT).show()
+    } 
 
     fun readData() : MutableList<Session>{
         var list : MutableList<Session> = ArrayList()

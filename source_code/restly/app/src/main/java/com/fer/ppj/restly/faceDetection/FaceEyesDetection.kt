@@ -1,4 +1,4 @@
-package com.fer.ppj.restly
+package com.fer.ppj.restly.faceDetection
 
 import android.util.Log
 import androidx.camera.core.ImageAnalysis
@@ -10,13 +10,14 @@ import com.google.firebase.ml.vision.face.FirebaseVisionFace
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions
 
 
-class FaceDetection(
+class FaceEyesDetection(
     private val facesDetected: (faces: List<FirebaseVisionFace>) -> Unit
 ) : ImageAnalysis.Analyzer {
 
     override fun analyze(image: ImageProxy, rotationDegrees: Int) {
         val options = FirebaseVisionFaceDetectorOptions.Builder()
             .setPerformanceMode(FirebaseVisionFaceDetectorOptions.FAST)
+            .setClassificationMode(FirebaseVisionFaceDetectorOptions.ALL_CLASSIFICATIONS)
             .build()
 
         val detector = FirebaseVision.getInstance().getVisionFaceDetector(options)

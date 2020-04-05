@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fer.ppj.restly">
 
@@ -10,7 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
@@ -20,9 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LeftRightExercise"/>
-        <activity android:name=".TiltExercise"/>
-        <activity android:name=".EyesExercise"/>
-        <activity android:name=".FrontBackExercise"/>
+        <activity android:name=".faceDetection.LeftRightExercise" />
+        <activity android:name=".faceDetection.TiltExercise" />
+        <activity android:name=".faceDetection.EyesExercise" />
+        <activity android:name=".faceDetection.FrontBackExercise" />
+        <activity android:name=".healthFragmentActivities.NutritionActivity" />
+        <activity android:name=".healthFragmentActivities.WorkoutActivity" />
+        <activity android:name=".healthFragmentActivities.WorkplaceActivity" />
     </application>
+
 </manifest>

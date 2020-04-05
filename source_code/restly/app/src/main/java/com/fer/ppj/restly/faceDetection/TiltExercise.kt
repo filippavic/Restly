@@ -1,4 +1,4 @@
-package com.fer.ppj.restly
+package com.fer.ppj.restly.faceDetection
 
 import android.Manifest
 import android.content.Intent
@@ -12,9 +12,10 @@ import androidx.camera.core.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
+import com.fer.ppj.restly.R
 import kotlinx.android.synthetic.main.activity_exercise.*
 
-class LeftRightExercise : AppCompatActivity() {
+class TiltExercise : AppCompatActivity() {
 
     private var exerciseProgress = 0
     private var prevAngle = 0.toFloat()
@@ -32,11 +33,15 @@ class LeftRightExercise : AppCompatActivity() {
 
         textureView = findViewById(R.id.texture_view)
 
+        text.text ="Nagnite glavu prema lijevom ramenu, pa prema desnom"
+
         // Request camera permissions
         if (isCameraPermissionGranted()) {
             textureView.post { startCamera() }
         } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), REQUEST_CAMERA_PERMISSION)
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA),
+                REQUEST_CAMERA_PERMISSION
+            )
         }
     }
 
@@ -59,11 +64,12 @@ class LeftRightExercise : AppCompatActivity() {
             .build()
         val imageAnalysis = ImageAnalysis(imageAnalysisConfig)
 
-        val faceDetection = FaceDetection { faces ->
-            faces.forEach {
-                exercise(it.headEulerAngleY)
+        val faceDetection =
+            FaceDetection { faces ->
+                faces.forEach {
+                    exercise(it.headEulerAngleZ)
+                }
             }
-        }
 
         imageAnalysis.analyzer = faceDetection
 
@@ -75,16 +81,16 @@ class LeftRightExercise : AppCompatActivity() {
         return selfPermission == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun exercise(angleY: Float){
-        if((angleY > 45 && prevAngle < 45)|| (angleY <-45 && prevAngle > -45)){
+    private fun exercise(angleZ: Float){
+        if((angleZ > 35 && prevAngle < 35)|| (angleZ <-35 && prevAngle > -35)){
             exerciseProgress ++
             progress_horizontal.progress = exerciseProgress
-            prevAngle = angleY
+            prevAngle = angleZ
         }
         if(noOfCalls == 0 && exerciseProgress == 1){
             noOfCalls ++
             text.text = "Vježba uspješno završena."
-            startActivity(Intent(this, FrontBackExercise::class.java))
+            startActivity(Intent(this, EyesExercise::class.java))
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
         }

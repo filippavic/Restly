@@ -1,6 +1,7 @@
-package com.fer.ppj.restly
+package com.fer.ppj.restly.faceDetection
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Size
@@ -11,12 +12,14 @@ import androidx.camera.core.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
+import com.fer.ppj.restly.R
+import com.google.firebase.ml.vision.face.FirebaseVisionFaceContour
 import kotlinx.android.synthetic.main.activity_exercise.*
 
-class EyesExercise : AppCompatActivity() {
+class FrontBackExercise : AppCompatActivity() {
 
     private var exerciseProgress = 0
-    private var eyeOpenPrev = 1
+    private var prevAngle = 0.toFloat()
     private var noOfCalls = 0
 
     companion object {
@@ -31,15 +34,13 @@ class EyesExercise : AppCompatActivity() {
 
         textureView = findViewById(R.id.texture_view)
 
-        text.text = "Zatvorite oči, zatim ih otvorite pa podignite obrve"
+        text.text = "Pomičite glavu naprijed natrag"
 
         // Request camera permissions
         if (isCameraPermissionGranted()) {
             textureView.post { startCamera() }
         } else {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.CAMERA),
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA),
                 REQUEST_CAMERA_PERMISSION
             )
         }
@@ -60,16 +61,18 @@ class EyesExercise : AppCompatActivity() {
         // Image for analysis configuration
         val imageAnalysisConfig = ImageAnalysisConfig.Builder()
             .setLensFacing(CameraX.LensFacing.FRONT)
-            .setTargetResolution(Size(200, 150))
+            .setTargetResolution(Size(200,150))
             .build()
         val imageAnalysis = ImageAnalysis(imageAnalysisConfig)
 
-        val faceDetection = FaceEyesDetection { faces ->
-            faces.forEach {
-                    val rightEyeOpen = it.rightEyeOpenProbability
-                    exercise(rightEyeOpen)
+        val faceDetection =
+            FaceAngleXDetection { faces ->
+                faces.forEach {
+                    val faceCenter =
+                        it.getContour(FirebaseVisionFaceContour.NOSE_BRIDGE).points[1].y
+                    exercise(faceCenter)
+                }
             }
-        }
 
         imageAnalysis.analyzer = faceDetection
 
@@ -77,33 +80,26 @@ class EyesExercise : AppCompatActivity() {
     }
 
     private fun isCameraPermissionGranted(): Boolean {
-        val selfPermission =
-            ContextCompat.checkSelfPermission(baseContext, Manifest.permission.CAMERA)
+        val selfPermission = ContextCompat.checkSelfPermission(baseContext, Manifest.permission.CAMERA)
         return selfPermission == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun exercise(rightEyeOpen: Float) {
-        if (eyeOpenPrev == 1 && rightEyeOpen < 0.3 && rightEyeOpen > 0) {
-            exerciseProgress++
+    private fun exercise(angleY: Float){
+        if((angleY > 110 && prevAngle < 110)|| (angleY < 60 && prevAngle > 60)){
+            exerciseProgress ++
             progress_horizontal.progress = exerciseProgress
-            eyeOpenPrev = 0
+            prevAngle = angleY
         }
-        if (rightEyeOpen > 0.9){
-            eyeOpenPrev = 1
-        }
-        if (noOfCalls == 0 && exerciseProgress == 1) {
+        if(noOfCalls == 0 && exerciseProgress == 1){
             noOfCalls ++
             text.text = "Vježba uspješno završena."
+            startActivity(Intent(this, TiltExercise::class.java))
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
         }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == REQUEST_CAMERA_PERMISSION) {
             if (isCameraPermissionGranted()) {
                 textureView.post { startCamera() }

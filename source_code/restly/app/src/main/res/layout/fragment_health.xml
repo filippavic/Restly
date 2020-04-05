@@ -4,10 +4,57 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/tv_exercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Health fragment"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/exercises" />
+
+    <Button
+        android:id="@+id/btn_exercise"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_below="@id/tv_exercise"
+        android:text="@string/all_exercises"/>
+
+    <TextView
+        android:id="@+id/tv_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_exercise"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/tips"/>
+
+    <Button
+        android:id="@+id/btn_workplace"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tv_tips"
+        android:layout_marginBottom="10dp"
+        android:text="@string/workplace"/>
+
+    <Button
+        android:id="@+id/btn_nutriton"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_workplace"
+        android:layout_marginBottom="10dp"
+        android:text="@string/nutrition"/>
+
+    <Button
+        android:id="@+id/btn_workout"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_nutriton"
+        android:layout_marginBottom="10dp"
+        android:text="@string/workout" />
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.fer.ppj.restly
+package com.fer.ppj.restly.faceDetection
 
 import android.util.Log
 import androidx.camera.core.ImageAnalysis

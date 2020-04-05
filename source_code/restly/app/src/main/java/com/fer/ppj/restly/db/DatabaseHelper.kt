@@ -1,4 +1,4 @@
-package com.fer.ppj.restly
+package com.fer.ppj.restly.db
 
 import android.content.ContentValues
 import android.content.Context
@@ -10,7 +10,8 @@ import java.sql.Timestamp
 
 
 class DatabaseHelper(context: Context?) :
-    SQLiteOpenHelper(context, TABLE_NAME, null, 1) {
+    SQLiteOpenHelper(context,
+        TABLE_NAME, null, 1) {
     override fun onCreate(db: SQLiteDatabase) {
         val createTable =
             "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +

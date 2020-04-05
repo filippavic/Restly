@@ -20,50 +20,38 @@
         android:textColor="#092FEC"
         android:textSize="36sp" />
 
-    <Button
-        android:id="@+id/startExercise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/chrono"
-        android:layout_centerHorizontal="true"
-        android:text="Pokreni vježbe" />
+<!--    <Button-->
+<!--        android:id="@+id/startExercise"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/chrono"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:text="Vježbe" />-->
 
     <Button
         android:id="@+id/startChrono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/startExercise"
+        android:layout_below="@id/chrono"
         android:layout_centerHorizontal="true"
-        android:text="Pokreni timer" />
+        android:text="@string/start_session" />
 
     <Button
-        android:id="@+id/stopChrono"
+        android:id="@+id/pauseChrono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/startChrono"
         android:layout_centerHorizontal="true"
-        android:text="Pauziraj timer"
+        android:text="@string/pause_session"
         android:visibility="gone" />
 
     <Button
-        android:id="@+id/resetChrono"
+        android:id="@+id/endChrono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/stopChrono"
+        android:layout_below="@id/pauseChrono"
         android:layout_centerHorizontal="true"
-        android:text="Resetiraj timer"
+        android:text="@string/end_session"
         android:visibility="gone" />
 
-    <Button
-        android:id="@+id/viewData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/resetChrono"
-        android:layout_centerHorizontal="true"
-        android:text="Pogledaj vježbe" />
-
-    <TextView
-        android:id="@+id/sessionLogData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 </RelativeLayout>
