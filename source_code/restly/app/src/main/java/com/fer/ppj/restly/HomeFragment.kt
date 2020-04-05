@@ -111,17 +111,24 @@ class HomeFragment : Fragment() {
     // Query: SELECT SUM(exercise_time), SUM(total_time) FROM restly WHERE date = '1970-01-01' GROUP BY exercise_time, total_time
     @RequiresApi(Build.VERSION_CODES.O)
     private fun displayData(view: View) {
-        var exercise_time = 0
-        var total_time = 0
+        var exerciseTimeWeek = 0
+        var totalTimeWeek = 0
+        var exerciseTimeDay = 0
+        var totalTimeDay = 0
         view.tv_today.text = ""
         val data = db.readData()
         for (i in 0 until (data.size)) {
+            if (data[i].date.time > System.currentTimeMillis() - 604800000 && data[i].date.time < System.currentTimeMillis()){
+                exerciseTimeWeek += data[i].exercise_time
+                totalTimeWeek += data[i].total_time
+            }
             if (data[i].date.toString() == LocalDate.now().toString()) {
-                exercise_time += data[i].exercise_time
-                total_time += data[i].total_time
+                exerciseTimeDay += data[i].exercise_time
+                totalTimeDay += data[i].total_time
             }
         }
-        view.tv_today.text = "Vrijeme vježbanja: " + exercise_time + "s, Ukupno vrijeme: " + total_time +"s"
+        view.tv_today.text = "Vrijeme vježbanja danas: " + exerciseTimeDay + "s, Ukupno vrijeme: " + totalTimeDay +"s"
+        view.tv_week.text = "Vrijeme vježbanja u posljednjih 7 dana: " + exerciseTimeWeek + "s, Ukupno vrijeme: " + totalTimeWeek +"s"
     }
 
 }
