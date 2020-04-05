@@ -21,6 +21,11 @@ class HomeFragment : Fragment() {
     private var running: Boolean = false
     private var db = DbHandler(activity)
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        db = DbHandler(activity)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
