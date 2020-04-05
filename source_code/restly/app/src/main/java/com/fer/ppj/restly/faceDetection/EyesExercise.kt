@@ -32,7 +32,7 @@ class EyesExercise : AppCompatActivity() {
 
         textureView = findViewById(R.id.texture_view)
 
-        text.text = "Zatvorite oči, zatim ih otvorite pa podignite obrve"
+        tv_hint.text = "Zatvorite oči, zatim ih otvorite pa podignite obrve"
 
         // Request camera permissions
         if (isCameraPermissionGranted()) {
@@ -95,7 +95,7 @@ class EyesExercise : AppCompatActivity() {
         }
         if (noOfCalls == 0 && exerciseProgress == 1) {
             noOfCalls ++
-            text.text = "Vježba uspješno završena."
+            tv_hint.text = "Vježba uspješno završena."
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
         }

@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import java.sql.Date
 import java.sql.Timestamp
 
 
@@ -17,7 +18,7 @@ class DatabaseHelper(context: Context?) :
             "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COL2 + " INTEGER," +
                     COL3 + " INTEGER," +
-                    COL4 + " INTEGER)"
+                    COL4 + " TEXT)"
         db.execSQL(createTable)
     }
 
@@ -26,7 +27,7 @@ class DatabaseHelper(context: Context?) :
         onCreate(db)
     }
 
-    fun addData(exercise_time: Int, total_time: Int, date_time: Timestamp): Boolean {
+    fun addData(exercise_time: Int, total_time: Int, date_time: Date): Boolean {
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(COL2, exercise_time)
@@ -57,6 +58,6 @@ class DatabaseHelper(context: Context?) :
         private const val COL1 = "ID"
         private const val COL2 = "exercise_time"
         private const val COL3 = "total_time"
-        private const val COL4 = "date_time"
+        private const val COL4 = "date"
     }
 }

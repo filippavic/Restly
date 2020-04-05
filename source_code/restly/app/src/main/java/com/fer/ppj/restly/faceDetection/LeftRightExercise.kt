@@ -87,7 +87,7 @@ class LeftRightExercise : AppCompatActivity() {
         }
         if(noOfCalls == 0 && exerciseProgress == 1){
             noOfCalls ++
-            text.text = "Vježba uspješno završena."
+            tv_hint.text = "Vježba uspješno završena."
             startActivity(Intent(this, FrontBackExercise::class.java))
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()

@@ -34,10 +34,10 @@ class HistoryFragment : Fragment() {
     }
 
     private fun displayData(view: View) {
-        view.historyData.text = ""
+        view.tv_historyData.text = ""
         val data = db.readData()
-        for (i in 0 until (data.size - 1)) {
-            view.historyData.append(
+        for (i in 0 until (data.size)) {
+            view.tv_historyData.append(
                 "ID: " + data[i].id.toString() + " Vrijeme vježbe: " + data[i].exercise_time.toString() + "s Ukupno vrijeme: " + data[i].total_time.toString() + "s Datum i vrijeme: " + data[i].date.toString() + "\n"
             )
         }

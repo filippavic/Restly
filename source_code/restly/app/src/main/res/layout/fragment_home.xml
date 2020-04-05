@@ -5,6 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/tv_today"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
     <Chronometer
         android:id="@+id/chrono"
         android:layout_width="wrap_content"
@@ -20,16 +27,8 @@
         android:textColor="#092FEC"
         android:textSize="36sp" />
 
-<!--    <Button-->
-<!--        android:id="@+id/startExercise"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/chrono"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:text="Vježbe" />-->
-
     <Button
-        android:id="@+id/startChrono"
+        android:id="@+id/btn_startChrono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/chrono"
@@ -37,19 +36,19 @@
         android:text="@string/start_session" />
 
     <Button
-        android:id="@+id/pauseChrono"
+        android:id="@+id/btn_pauseChrono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/startChrono"
+        android:layout_below="@id/btn_startChrono"
         android:layout_centerHorizontal="true"
         android:text="@string/pause_session"
         android:visibility="gone" />
 
     <Button
-        android:id="@+id/endChrono"
+        android:id="@+id/btn_endChrono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pauseChrono"
+        android:layout_below="@id/btn_pauseChrono"
         android:layout_centerHorizontal="true"
         android:text="@string/end_session"
         android:visibility="gone" />
