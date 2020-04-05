@@ -14,7 +14,7 @@ val COL_EXERCISE_TIME = "exercise_time"
 val COL_TOTAL_TIME = "total_time"
 val COL_DATE = "date"
 
-class DbHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1) {
+class DbHandler(var context: Context?) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1) {
     override fun onCreate(db: SQLiteDatabase?) {
         val createTable =
             "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
