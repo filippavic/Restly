@@ -73,15 +73,5 @@ class MainActivity : AppCompatActivity() {
         transaction.add(R.id.container, HistoryFragment(), "history")
         transaction.commit()
     }
-    
-    fun refresh() {
-        val transaction = manager.beginTransaction()
-        manager.findFragmentByTag("home")?.let { transaction.remove(it) }
-        manager.findFragmentByTag("health")?.let { transaction.remove(it) }
-        manager.findFragmentByTag("history")?.let { transaction.remove(it) }
-        transaction.commitNow()
-        initFragments()
-        showFragmentHome()
-    }
 
 }

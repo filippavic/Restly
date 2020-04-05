@@ -66,6 +66,7 @@ class HomeFragment : Fragment() {
 //        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun initListeners(view: View) {
         view.btn_startChrono.setOnClickListener {
             running = true
@@ -100,8 +101,7 @@ class HomeFragment : Fragment() {
             view.btn_pauseChrono.visibility = View.GONE
             view.btn_endChrono.visibility = View.GONE
             view.btn_startChrono.visibility = View.VISIBLE
-            val activity: MainActivity? = activity as MainActivity?
-            activity!!.refresh()
+            displayData(view)
         }
 
     }
