@@ -56,9 +56,10 @@ class LeftRightExercise : AppCompatActivity() {
         }
 
         // Image for analysis configuration
+        // 400x300 for phones with AI core
         val imageAnalysisConfig = ImageAnalysisConfig.Builder()
             .setLensFacing(CameraX.LensFacing.FRONT)
-            .setTargetResolution(Size(400,300))
+            .setTargetResolution(Size(100,100))
             .build()
         val imageAnalysis = ImageAnalysis(imageAnalysisConfig)
 
@@ -85,7 +86,7 @@ class LeftRightExercise : AppCompatActivity() {
             progress_horizontal.progress = exerciseProgress
             prevAngle = angleY
         }
-        if(noOfCalls == 0 && exerciseProgress == 1){
+        if(noOfCalls == 0 && exerciseProgress == 10){
             noOfCalls ++
             tv_hint.text = "Vježba uspješno završena."
             startActivity(Intent(this, FrontBackExercise::class.java))

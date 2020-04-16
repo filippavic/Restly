@@ -59,9 +59,10 @@ class EyesExercise : AppCompatActivity() {
         }
 
         // Image for analysis configuration
+        // 200x150 for phones with AI core
         val imageAnalysisConfig = ImageAnalysisConfig.Builder()
             .setLensFacing(CameraX.LensFacing.FRONT)
-            .setTargetResolution(Size(200, 150))
+            .setTargetResolution(Size(100, 100))
             .build()
         val imageAnalysis = ImageAnalysis(imageAnalysisConfig)
 
@@ -93,7 +94,7 @@ class EyesExercise : AppCompatActivity() {
         if (rightEyeOpen > 0.9){
             eyeOpenPrev = 1
         }
-        if (noOfCalls == 0 && exerciseProgress == 1) {
+        if (noOfCalls == 0 && exerciseProgress == 10) {
             noOfCalls ++
             tv_hint.text = "Vježba uspješno završena."
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
