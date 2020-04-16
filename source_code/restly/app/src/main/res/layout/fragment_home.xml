@@ -1,30 +1,418 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/mainBackground">
 
-    <TextView
-        android:id="@+id/tv_today"
-        android:layout_width="wrap_content"
+    <Space
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"/>
+        android:layout_weight="1" />
 
-    <TextView
-        android:id="@+id/tv_week"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/tv_today"/>
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/headerWelcomeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/welcome"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/headerUserText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="korisnik!"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="36sp" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <RelativeLayout
+            android:layout_width="110dp"
+            android:layout_height="130dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/header_card"
+            android:elevation="9dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/streakImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/fire_on" />
+
+            <TextView
+                android:id="@+id/streakCounterText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/streakImage"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="7 dana"
+                android:textColor="@color/mainText"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/streakLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/streakCounterText"
+                android:layout_centerInParent="true"
+                android:fontFamily="sans-serif-regular"
+                android:text="@string/streak"
+                android:textColor="@color/altText"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="110dp"
+            android:layout_height="130dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/header_card"
+            android:elevation="9dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/goalImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/mountain_on" />
+
+            <TextView
+                android:id="@+id/goalCounterText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/goalImage"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="45 min"
+                android:textColor="@color/mainText"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/goalLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/goalCounterText"
+                android:layout_centerInParent="true"
+                android:fontFamily="sans-serif-regular"
+                android:text="@string/goal_today"
+                android:textColor="@color/altText"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="110dp"
+            android:layout_height="130dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/header_card"
+            android:elevation="9dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/longestImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/trophy_on" />
+
+            <TextView
+                android:id="@+id/longestCounterText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/longestImage"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="12 dana"
+                android:textColor="@color/mainText"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/longestLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/longestCounterText"
+                android:layout_centerInParent="true"
+                android:fontFamily="sans-serif-regular"
+                android:text="@string/longest_streak"
+                android:textColor="@color/altText"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/todayLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/today"
+            android:textColor="@color/mainText"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/header_card"
+            android:elevation="6dp"
+            android:gravity="center_vertical">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/todayClockImage"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/clock" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/todayExerciseCounterText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/mainText"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/todayExerciseLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/todayExerciseCounterText"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-regular"
+                    android:text="@string/main_excercise"
+                    android:textColor="@color/altText"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/todayWorkCounterText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/mainText"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/todayWorkLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/todayWorkCounterText"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-regular"
+                    android:text="@string/main_work"
+                    android:textColor="@color/altText"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/weekLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/this_week"
+            android:textColor="@color/mainText"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/header_card"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:elevation="4dp"
+            android:gravity="center_vertical">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/weekClockImage"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/clock_off" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/weekExerciseCounterText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/mainText"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/weekExerciseLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/weekExerciseCounterText"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-regular"
+                    android:text="@string/main_excercise"
+                    android:textColor="@color/altText"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/weekWorkCounterText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/mainText"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/weekWorkLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/weekWorkCounterText"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-regular"
+                    android:text="@string/main_work"
+                    android:textColor="@color/altText"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
     <Chronometer
         android:id="@+id/chrono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:layout_margin="20dp"
         android:layout_marginStart="68dp"
         android:layout_marginTop="256dp"
@@ -32,32 +420,64 @@
         android:layout_marginBottom="28dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#092FEC"
-        android:textSize="36sp" />
+        android:textSize="36sp"
+        android:visibility="gone" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/btn_startChrono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/chrono"
-        android:layout_centerHorizontal="true"
-        android:text="@string/start_session" />
+        android:background="@drawable/main_btn_bg"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/start_session"
+        android:textAlignment="center"
+        android:textColor="@color/mainBackground"
+        android:layout_gravity="center" />
 
-    <Button
-        android:id="@+id/btn_pauseChrono"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_startChrono"
-        android:layout_centerHorizontal="true"
-        android:text="@string/pause_session"
-        android:visibility="gone" />
+        android:orientation="horizontal"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/btn_endChrono"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btn_pauseChrono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/main_btn_bg"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/pause_session"
+            android:textColor="@color/mainBackground"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_endChrono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/main_btn_bg"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="@string/end_session"
+            android:textColor="@color/mainBackground"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/chrono_space"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_pauseChrono"
-        android:layout_centerHorizontal="true"
-        android:text="@string/end_session"
-        android:visibility="gone" />
+        android:layout_weight="1" />
 
-</RelativeLayout>
+</LinearLayout>

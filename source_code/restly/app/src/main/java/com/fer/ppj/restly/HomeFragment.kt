@@ -115,7 +115,10 @@ class HomeFragment : Fragment() {
         var totalTimeWeek = 0
         var exerciseTimeDay = 0
         var totalTimeDay = 0
-        view.tv_today.text = ""
+        view.todayExerciseCounterText.text = ""
+        view.todayWorkCounterText.text = ""
+        view.weekExerciseCounterText.text = ""
+        view.weekWorkCounterText.text = ""
         val data = db.readData()
         for (i in 0 until (data.size)) {
             if (data[i].date.time > System.currentTimeMillis() - 604800000 && data[i].date.time < System.currentTimeMillis()){
@@ -127,8 +130,10 @@ class HomeFragment : Fragment() {
                 totalTimeDay += data[i].total_time
             }
         }
-        view.tv_today.text = "Vrijeme vježbanja danas: " + exerciseTimeDay + "s, Ukupno vrijeme: " + totalTimeDay +"s"
-        view.tv_week.text = "Vrijeme vježbanja u posljednjih 7 dana: " + exerciseTimeWeek + "s, Ukupno vrijeme: " + totalTimeWeek +"s"
+        view.todayExerciseCounterText.text = "" + exerciseTimeDay + " s"
+        view.todayWorkCounterText.text = "" + totalTimeDay + " s"
+        view.weekExerciseCounterText.text = "" + exerciseTimeWeek + " s"
+        view.weekWorkCounterText.text = "" + totalTimeWeek + " s"
     }
 
 }
