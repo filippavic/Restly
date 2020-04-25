@@ -9,4 +9,14 @@
     <string name="workplace">Radno mjesto</string>
     <string name="nutrition">Prehrana</string>
     <string name="workout">Tjelovježba</string>
+
+    <string name="welcome">Dobrodošao,</string>
+    <string name="streak">streak</string>
+    <string name="goal_today">cilj danas</string>
+    <string name="longest_streak">najdulji streak</string>
+
+    <string name="today">Danas</string>
+    <string name="this_week">Ovaj tjedan</string>
+    <string name="main_excercise">vježbe</string>
+    <string name="main_work">rada</string>
 </resources>
