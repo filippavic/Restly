@@ -19,4 +19,7 @@
     <string name="this_week">Ovaj tjedan</string>
     <string name="main_excercise">vježbe</string>
     <string name="main_work">rada</string>
+
+    <string name="working">Radi se...</string>
+    <string name="close">ZATVORI</string>
 </resources>
