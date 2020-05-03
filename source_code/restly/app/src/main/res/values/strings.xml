@@ -3,7 +3,7 @@
     <string name="start_session">Kreni raditi</string>
     <string name="pause_session">Pauziraj</string>
     <string name="end_session">Završi</string>
-    <string name="exercises">Vježbe</string>
+    <string name="exercises">AR Vježbe</string>
     <string name="tips">Savjeti</string>
     <string name="all_exercises">Sve vježbe</string>
     <string name="workplace">Radno mjesto</string>
@@ -19,4 +19,7 @@
     <string name="this_week">Ovaj tjedan</string>
     <string name="main_excercise">vježbe</string>
     <string name="main_work">rada</string>
+
+    <string name="working">Radi se...</string>
+    <string name="close">ZATVORI</string>
 </resources>

@@ -4,57 +4,183 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tv_exercise"
+        android:id="@+id/ARExerciseLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="30dp"
-        android:text="@string/exercises" />
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/exercises"
+        android:textColor="@color/mainText"
+        android:textSize="20sp" />
 
-    <Button
+   <!-- <Button
         android:id="@+id/btn_exercise"
         android:layout_width="300dp"
         android:layout_height="70dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/tv_exercise"
-        android:text="@string/all_exercises"/>
+        android:layout_below="@id/ARExerciseLabel"
+        android:text="@string/all_exercises"/>-->
+
+    <LinearLayout
+        android:id="@+id/btn_exercise"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/ARExerciseLabel"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/health_exercise_card"
+        android:clickable="true"
+        android:elevation="6dp"
+        android:focusable="true"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/ExerciseCardLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_weight="0.9"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/all_exercises"
+            android:textColor="@color/altBackground"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/exerciseCardImage"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="30dp"
+            android:layout_gravity="end"
+            android:clickable="false"
+            android:src="@drawable/head" />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_tips"
+        android:id="@+id/TipsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_exercise"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="30dp"
-        android:text="@string/tips"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/tips"
+        android:textColor="@color/mainText"
+        android:textSize="20sp" />
 
-    <Button
+    <LinearLayout
         android:id="@+id/btn_workplace"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/tv_tips"
-        android:layout_marginBottom="10dp"
-        android:text="@string/workplace"/>
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/TipsLabel"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/health_workplace_card"
+        android:clickable="true"
+        android:elevation="6dp"
+        android:focusable="true"
+        android:gravity="center_vertical">
 
-    <Button
-        android:id="@+id/btn_nutriton"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:layout_centerHorizontal="true"
+        <TextView
+            android:id="@+id/WorkplaceCardLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_weight="0.9"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/workplace"
+            android:textColor="@color/altBackground"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/workplaceCardImage"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="30dp"
+            android:layout_gravity="end"
+            android:clickable="false"
+            android:src="@drawable/work" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btn_nutrition"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
         android:layout_below="@id/btn_workplace"
-        android:layout_marginBottom="10dp"
-        android:text="@string/nutrition"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/health_nutrition_card"
+        android:clickable="true"
+        android:elevation="6dp"
+        android:focusable="true"
+        android:gravity="center_vertical">
 
-    <Button
+        <TextView
+            android:id="@+id/nutritionCardLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_weight="0.9"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/nutrition"
+            android:textColor="@color/altBackground"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/nutritionCardImage"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="30dp"
+            android:layout_gravity="end"
+            android:clickable="false"
+            android:src="@drawable/diet" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/btn_workout"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/btn_nutriton"
-        android:layout_marginBottom="10dp"
-        android:text="@string/workout" />
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/btn_nutrition"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/health_workout_card"
+        android:clickable="true"
+        android:elevation="6dp"
+        android:focusable="true"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/workoutCardLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_weight="0.9"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/workout"
+            android:textColor="@color/altBackground"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/workoutCardImage"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="30dp"
+            android:layout_gravity="end"
+            android:clickable="false"
+            android:src="@drawable/workout_drinks" />
+
+    </LinearLayout>
 
 </RelativeLayout>

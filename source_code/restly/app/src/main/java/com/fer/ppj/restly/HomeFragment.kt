@@ -18,6 +18,7 @@ import com.fer.ppj.restly.faceDetection.LeftRightExercise
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.sql.Date
 import java.time.LocalDate
+import com.fer.ppj.restly.WorkActivity
 
 
 class HomeFragment : Fragment() {
@@ -68,7 +69,7 @@ class HomeFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun initListeners(view: View) {
-        view.btn_startChrono.setOnClickListener {
+        /*view.btn_startChrono.setOnClickListener {
             running = true
             view.chrono.base = (SystemClock.elapsedRealtime() - pauseOffset);
             view.chrono.start()
@@ -102,8 +103,11 @@ class HomeFragment : Fragment() {
             view.btn_endChrono.visibility = View.GONE
             view.btn_startChrono.visibility = View.VISIBLE
             displayData(view)
-        }
+        }*/
 
+        view.btn_startChrono.setOnClickListener {
+            startActivity(Intent(activity, WorkActivity::class.java))
+        }
     }
 
     // RawQuery mi nije delal kak treba pa sam pozbrojil vremena rucno, ne znak kolko hita performanse kad ima puno podataka

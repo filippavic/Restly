@@ -34,7 +34,7 @@ class HealthFragment : Fragment() {
         view.btn_workplace.setOnClickListener {
             startActivity(Intent(activity, WorkplaceActivity::class.java))
         }
-        view.btn_nutriton.setOnClickListener {
+        view.btn_nutrition.setOnClickListener {
             startActivity(Intent(activity, NutritionActivity::class.java))
         }
         view.btn_workout.setOnClickListener {
