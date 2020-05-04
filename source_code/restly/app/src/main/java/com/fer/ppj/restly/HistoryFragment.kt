@@ -12,12 +12,9 @@ import kotlinx.android.synthetic.main.fragment_history.view.*
 
 
 class HistoryFragment : Fragment() {
-    private var db = DbHandler(activity)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        db = DbHandler(activity)
-        Log.d("DbHandler History", db.toString())
     }
 
     override fun onCreateView(
@@ -26,14 +23,14 @@ class HistoryFragment : Fragment() {
     ): View {
         val view: View = inflater.inflate(R.layout.fragment_history, container, false)
 
-        Handler().postDelayed({
-            displayData(view)
-        }, 100)
+        displayData(view)
 
         return view
     }
 
     private fun displayData(view: View) {
+        val db = DbHandler(activity)
+
         view.tv_historyData.text = ""
         val data = db.readData()
         for (i in 0 until (data.size)) {

@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/mainBackground">
+    android:background="@color/mainBackground"
+    android:orientation="vertical">
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+    <ImageView
+        android:id="@+id/iv_settings"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_settings"
+        android:tint="@color/altText" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/headerWelcomeText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/welcome"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
-            android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/headerWelcomeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/welcome"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="36sp" />
 
         <TextView
             android:id="@+id/headerUserText"
@@ -47,11 +52,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingBottom="5dp"
-        android:clipChildren="false"
-        android:clipToPadding="false">
+        android:paddingBottom="5dp">
 
         <RelativeLayout
             android:layout_width="110dp"
@@ -183,9 +188,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:clipChildren="false"
         android:clipToPadding="false"
+        android:orientation="vertical"
         android:paddingBottom="10dp">
 
         <TextView
@@ -432,19 +437,19 @@
         android:id="@+id/btn_startChrono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="@drawable/main_btn_bg"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="@string/start_session"
         android:textAlignment="center"
-        android:textColor="@color/mainBackground"
-        android:layout_gravity="center" />
+        android:textColor="@color/mainBackground" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_pauseChrono"

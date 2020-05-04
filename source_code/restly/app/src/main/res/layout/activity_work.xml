@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/gradient_animation"
-    tools:context=".WorkActivity">
+    tools:context=".WorkActivity"
+    android:fitsSystemWindows="true">
 
     <Space
         android:layout_width="0dp"

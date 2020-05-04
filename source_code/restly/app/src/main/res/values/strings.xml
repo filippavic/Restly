@@ -22,4 +22,16 @@
 
     <string name="working">Radi se...</string>
     <string name="close">ZATVORI</string>
+    <string name="settings">Postavke</string>
+    <string name="health">Zdravlje</string>
+    <string name="circle">Circle</string>
+    <string name="pause_length">Trajanje pauze</string>
+    <string name="min">" min"</string>
+    <string name="short_pause_freq">Učestalost kratke pause</string>
+    <string name="long_pause_freq">Učestalost duge pauze</string>
+    <string name="daily_goal">Dnevni cilj</string>
+    <string name="restly">Restly</string>
+    <string name="intro_end">Za kraj, zamolili bi te za par stvari:</string>
+    <string name="your_name">Tvoje ime</string>
+    <string name="finish">Završi</string>
 </resources>

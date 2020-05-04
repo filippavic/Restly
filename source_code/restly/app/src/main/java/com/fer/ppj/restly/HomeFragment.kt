@@ -1,5 +1,6 @@
 package com.fer.ppj.restly
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -9,27 +10,30 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.fer.ppj.restly.db.DbHandler
-import com.fer.ppj.restly.db.Session
 import com.fer.ppj.restly.faceDetection.LeftRightExercise
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import java.sql.Date
 import java.time.LocalDate
-import com.fer.ppj.restly.WorkActivity
+import java.util.*
 
 
 class HomeFragment : Fragment() {
     private var pauseOffset: Long = 0
     private var running: Boolean = false
-    private var db = DbHandler(activity)
+    private var streak: Int = 1
+    private var maxStreak: Int = 1
+    private var dailyGoal = 0
+    private var exerciseTimeDay = 0
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        db = DbHandler(activity)
-        Log.d("DbHandler Home", db.toString())
+
+        setUsername()
+        setDailyGoal()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -42,9 +46,11 @@ class HomeFragment : Fragment() {
 
         initListeners(view)
 
+        displayData(view)
+
         Handler().postDelayed({
-            displayData(view)
-        }, 100)
+            dailyGoalAchievement()
+        }, 50)
 
         val handler = Handler()
 
@@ -64,7 +70,29 @@ class HomeFragment : Fragment() {
 
     fun startNextActivity() {
         startActivity(Intent(activity, LeftRightExercise::class.java))
+        this.activity?.finish()
 //        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+    }
+
+    private fun setUsername() {
+        val storage = this.activity?.getSharedPreferences("STORAGE", Context.MODE_PRIVATE)
+        val username = storage?.getString("username", "korisnik")
+
+        headerUserText.text = username + "!"
+    }
+
+    private fun setDailyGoal() {
+        val storage = this.activity?.getSharedPreferences("STORAGE", Context.MODE_PRIVATE)
+        dailyGoal = storage!!.getInt("dailyGoal", 1)
+
+        goalCounterText.text = dailyGoal.toString() + " min"
+
+        view?.goalImage?.setColorFilter(
+            ContextCompat.getColor(
+                this.activity!!.applicationContext,
+                R.color.altText
+            ), android.graphics.PorterDuff.Mode.SRC_IN
+        )
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -105,8 +133,14 @@ class HomeFragment : Fragment() {
             displayData(view)
         }*/
 
+        view.iv_settings.setOnClickListener {
+            startActivity(Intent(activity, SettingsActivity::class.java))
+            this.activity?.finish()
+        }
+
         view.btn_startChrono.setOnClickListener {
             startActivity(Intent(activity, WorkActivity::class.java))
+            this.activity?.finish()
         }
     }
 
@@ -115,9 +149,11 @@ class HomeFragment : Fragment() {
     // Query: SELECT SUM(exercise_time), SUM(total_time) FROM restly WHERE date = '1970-01-01' GROUP BY exercise_time, total_time
     @RequiresApi(Build.VERSION_CODES.O)
     private fun displayData(view: View) {
+        val db = DbHandler(activity)
+
         var exerciseTimeWeek = 0
         var totalTimeWeek = 0
-        var exerciseTimeDay = 0
+        exerciseTimeDay = 0
         var totalTimeDay = 0
         view.todayExerciseCounterText.text = ""
         view.todayWorkCounterText.text = ""
@@ -125,7 +161,22 @@ class HomeFragment : Fragment() {
         view.weekWorkCounterText.text = ""
         val data = db.readData()
         for (i in 0 until (data.size)) {
-            if (data[i].date.time > System.currentTimeMillis() - 604800000 && data[i].date.time < System.currentTimeMillis()){
+            if (i < data.size - 1) {
+                val calNow: Calendar = GregorianCalendar()
+                calNow.time = data[i].date
+                val calNext: Calendar = GregorianCalendar()
+                calNext.time = data[i + 1].date
+                Log.d("time", calNow.get(Calendar.DAY_OF_MONTH).toString())
+                if (calNow.get(Calendar.DAY_OF_MONTH) + 1 == calNext.get(Calendar.DAY_OF_MONTH)) {
+                    streak++
+                    if (streak > maxStreak) {
+                        maxStreak = streak
+                    }
+                } else if (calNow.get(Calendar.DAY_OF_MONTH) + 1 != calNext.get(Calendar.DAY_OF_MONTH)) {
+                    streak = 1
+                }
+            }
+            if (data[i].date.time > System.currentTimeMillis() - 604800000 && data[i].date.time < System.currentTimeMillis()) {
                 exerciseTimeWeek += data[i].exercise_time
                 totalTimeWeek += data[i].total_time
             }
@@ -134,10 +185,39 @@ class HomeFragment : Fragment() {
                 totalTimeDay += data[i].total_time
             }
         }
+        if (data.size == 0) {
+            streak = 0
+            maxStreak = 0
+        }
         view.todayExerciseCounterText.text = "" + exerciseTimeDay + " s"
         view.todayWorkCounterText.text = "" + totalTimeDay + " s"
         view.weekExerciseCounterText.text = "" + exerciseTimeWeek + " s"
         view.weekWorkCounterText.text = "" + totalTimeWeek + " s"
+        if (streak % 10 == 1 && streak != 11) {
+            view.streakCounterText.text = "" + streak + " dan"
+        } else if (streak % 10 != 1) {
+            view.streakCounterText.text = "" + streak + " dana"
+        }
+        if (maxStreak % 10 == 1 && streak != 11) {
+            view.longestCounterText.text = "" + maxStreak + " dan"
+        } else if (maxStreak % 10 != 1) {
+            view.longestCounterText.text = "" + maxStreak + " dana"
+        }
+
+        if (exerciseTimeDay / 60 < dailyGoal) {
+            view.goalImage.setColorFilter(
+                ContextCompat.getColor(
+                    this.activity!!.applicationContext,
+                    R.color.altText
+                ), android.graphics.PorterDuff.Mode.SRC_IN
+            )
+        }
+    }
+
+    private fun dailyGoalAchievement(){
+        if (exerciseTimeDay / 60 > dailyGoal) {
+            view?.goalImage?.colorFilter = null
+        }
     }
 
 }

@@ -61,7 +61,8 @@ class MainActivity : AppCompatActivity() {
         val transaction = manager.beginTransaction()
         manager.findFragmentByTag("health")?.let { transaction.hide(it) }
         manager.findFragmentByTag("history")?.let { transaction.hide(it) }
-        manager.findFragmentByTag("home")?.let { transaction.show(it) }
+        manager.findFragmentByTag("home")?.let { transaction.remove(it) }
+        transaction.add(R.id.container, HomeFragment(), "home")
         transaction.commit()
     }
 
