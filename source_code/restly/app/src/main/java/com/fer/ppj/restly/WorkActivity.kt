@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
@@ -18,8 +19,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import com.fer.ppj.restly.db.DbHandler
 import com.fer.ppj.restly.db.Session
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.fer.ppj.restly.faceDetection.LeftRightExercise
 import kotlinx.android.synthetic.main.activity_work.*
+import kotlinx.android.synthetic.main.music_sheet_layout.*
 import java.sql.Date
 
 
@@ -31,6 +34,8 @@ class WorkActivity : AppCompatActivity() {
     val channelId = "com.fer.ppj.restly.notifications"
     val description = "Obavijesti o pauzama i vježbama"
     private var action = ""
+
+    private var mp: MediaPlayer? = null
 
 //    Mislim da ovo ne treba, ak sam u krivu slobodno odkomentiraj
 //    Fixal sam pozivanje activityja, tam dolje si u intent slal context od MainActivity pa se je zato on palil
@@ -52,7 +57,79 @@ class WorkActivity : AppCompatActivity() {
         var stopTime: Long = 0
         chrono.base = SystemClock.elapsedRealtime() + stopTime
         chrono.start()
-        
+
+        val bottomSheetBehavior = BottomSheetBehavior.from(musicBottomSheet)
+
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN)
+
+        btn_musicMenu.setOnClickListener{
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED)
+        }
+
+        btn_sound_ok.setOnClickListener{
+            //ovo crasha activity, don't know why
+            //bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN)
+            Toast.makeText(applicationContext, "Povuci izbornik prema dolje", Toast.LENGTH_LONG)
+                .show()
+        }
+
+        btn_sea_sound.setOnClickListener {
+            if (mp != null) {
+                mp!!.stop()
+                mp!!.release()
+                mp = null
+            }
+            btn_sea_sound.setBackgroundResource(R.drawable.sea_sound_card)
+            btn_rain_sound.setBackgroundResource(R.drawable.not_active_card)
+            btn_forest_sound.setBackgroundResource(R.drawable.not_active_card)
+            btn_alpha_sound.setBackgroundResource(R.drawable.not_active_card)
+            btn_no_sound.setBackgroundResource(R.drawable.not_active_card)
+            mp = MediaPlayer.create(this, R.raw.sea)
+            mp!!.isLooping = true
+            mp!!.setVolume(0.5f, 0.5f)
+            mp!!.start()
+        }
+
+        btn_rain_sound.setOnClickListener {
+            if (mp != null) {
+                mp!!.stop()
+                mp!!.release()
+                mp = null
+            }
+            btn_sea_sound.setBackgroundResource(R.drawable.not_active_card)
+            btn_rain_sound.setBackgroundResource(R.drawable.rain_sound_card)
+            btn_forest_sound.setBackgroundResource(R.drawable.not_active_card)
+            btn_alpha_sound.setBackgroundResource(R.drawable.not_active_card)
+            btn_no_sound.setBackgroundResource(R.drawable.not_active_card)
+            mp = MediaPlayer.create(this, R.raw.rain)
+            mp!!.isLooping = true
+            mp!!.setVolume(0.5f, 0.5f)
+            mp!!.start()
+        }
+
+        btn_forest_sound.setOnClickListener {
+            Toast.makeText(applicationContext, "Dolazi uskoro!", Toast.LENGTH_LONG)
+                .show()
+        }
+
+        btn_alpha_sound.setOnClickListener {
+            Toast.makeText(applicationContext, "Dolazi uskoro!", Toast.LENGTH_LONG)
+                .show()
+        }
+
+        btn_no_sound.setOnClickListener{
+            if (mp != null) {
+                mp!!.stop()
+                mp!!.release()
+                mp = null
+                btn_sea_sound.setBackgroundResource(R.drawable.not_active_card)
+                btn_rain_sound.setBackgroundResource(R.drawable.not_active_card)
+                btn_forest_sound.setBackgroundResource(R.drawable.not_active_card)
+                btn_alpha_sound.setBackgroundResource(R.drawable.not_active_card)
+                btn_no_sound.setBackgroundResource(R.drawable.health_nutrition_card)
+            }
+        }
+
         btn_stopWorking.setOnClickListener {
             stopTime = SystemClock.elapsedRealtime() - chrono.base
             chrono.stop()

@@ -34,4 +34,14 @@
     <string name="intro_end">Za kraj, zamolili bi te za par stvari:</string>
     <string name="your_name">Tvoje ime</string>
     <string name="finish">Završi</string>
+
+    <string name="sounds">Zvukovi za koncentraciju</string>
+    <string name="sea">More</string>
+    <string name="rain">Kiša</string>
+    <string name="forest">Šuma</string>
+    <string name="alpha">Alpha</string>
+    <string name="nosound">Bez zvukova</string>
+
+    <string name="ok">U REDU</string>
+
 </resources>

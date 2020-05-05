@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/workContainer"
@@ -7,74 +7,82 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/gradient_animation"
-    tools:context=".WorkActivity"
-    android:fitsSystemWindows="true">
+    tools:context=".WorkActivity">
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.2" />
-
-    <TextView
-        android:id="@+id/workingHeaderText"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/working"
-        android:textAlignment="center"
-        android:textColor="@color/altBackground"
-        android:textSize="32sp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
-
-    <Chronometer
-        android:id="@+id/chrono"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:textAlignment="center"
-        android:textColor="@color/altBackground"
-        android:textSize="50sp" />
-
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2" />
 
         <TextView
-            android:id="@+id/btn_stopWorking"
-            android:layout_width="wrap_content"
+            android:id="@+id/workingHeaderText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:clickable="true"
-            android:focusable="true"
             android:fontFamily="sans-serif-medium"
-            android:text="@string/close"
+            android:text="@string/working"
             android:textAlignment="center"
             android:textColor="@color/altBackground"
-            android:textSize="16sp" />
+            android:textSize="32sp" />
 
-        <ImageView
-            android:id="@+id/musicMenuImage"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/playlist"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="40dp"/>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
-    </RelativeLayout>
+        <Chronometer
+            android:id="@+id/chrono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textAlignment="center"
+            android:textColor="@color/altBackground"
+            android:textSize="50sp" />
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.15" />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
-</LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/btn_stopWorking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/close"
+                android:textAlignment="center"
+                android:textColor="@color/altBackground"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/btn_musicMenu"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/playlist"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="40dp"/>
+
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15" />
+
+    </LinearLayout>
+
+    <include layout="@layout/music_sheet_layout" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
