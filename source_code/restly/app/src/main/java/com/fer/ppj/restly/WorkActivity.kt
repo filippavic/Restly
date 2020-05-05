@@ -140,6 +140,12 @@ class WorkActivity : AppCompatActivity() {
             )
             db.insertData(session)
 
+            if (mp != null) {
+                mp!!.stop()
+                mp!!.release()
+                mp = null
+            }
+
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
