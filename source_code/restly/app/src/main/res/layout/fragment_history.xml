@@ -3,9 +3,42 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_historyData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_historyTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exercise_history"
+            android:layout_centerHorizontal="true"
+            android:textSize="25sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="70dp"/>
+
+        <LinearLayout
+            android:layout_below="@id/tv_historyTitle"
+            android:id="@+id/history_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <Button
+            android:layout_below="@id/history_container"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/main_btn_bg"
+            android:textColor="@color/white"
+            android:elevation="6dp"
+            android:id="@+id/btn_more"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:textAllCaps="false"
+            android:text="@string/more" />
+
+    </RelativeLayout>
 
 </ScrollView>

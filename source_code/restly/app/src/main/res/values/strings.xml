@@ -43,5 +43,8 @@
     <string name="nosound">Bez zvukova</string>
 
     <string name="ok">U REDU</string>
+    <string name="date">datum</string>
+    <string name="exercise_history">Povijest vježbi</string>
+    <string name="more">Učitaj još...</string>
 
 </resources>

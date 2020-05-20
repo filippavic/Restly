@@ -166,7 +166,7 @@ class HomeFragment : Fragment() {
                 calNow.time = data[i].date
                 val calNext: Calendar = GregorianCalendar()
                 calNext.time = data[i + 1].date
-                Log.d("time", calNow.get(Calendar.DAY_OF_MONTH).toString())
+//                Log.d("time", calNow.get(Calendar.DAY_OF_MONTH).toString())
                 if (calNow.get(Calendar.DAY_OF_MONTH) + 1 == calNext.get(Calendar.DAY_OF_MONTH)) {
                     streak++
                     if (streak > maxStreak) {

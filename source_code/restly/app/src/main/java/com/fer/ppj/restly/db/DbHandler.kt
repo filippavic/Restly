@@ -11,7 +11,6 @@ import androidx.annotation.RequiresApi
 import java.sql.Date
 import java.time.LocalDate
 
-
 val DATABASE_NAME = "Sessions"
 val TABLE_NAME = "Session"
 val COL_EXERCISE_TIME = "exercise_time"
@@ -56,6 +55,52 @@ class DbHandler(var context: Context?) : SQLiteOpenHelper(
 
         val db = this.readableDatabase
         val query = "SELECT * FROM " + TABLE_NAME
+        val result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                var session = Session()
+                session.id = result.getInt(0)
+                session.exercise_time = result.getInt(1)
+                session.total_time = result.getInt(2)
+                session.date = Date(result.getLong(3))
+                list.add(session)
+            } while (result.moveToNext())
+        }
+
+        result.close()
+        db.close()
+
+        return list
+    }
+
+    fun readDataTop10(): MutableList<Session> {
+        var list: MutableList<Session> = ArrayList()
+
+        val db = this.readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME LIMIT 7"
+        val result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                var session = Session()
+                session.id = result.getInt(0)
+                session.exercise_time = result.getInt(1)
+                session.total_time = result.getInt(2)
+                session.date = Date(result.getLong(3))
+                list.add(session)
+            } while (result.moveToNext())
+        }
+
+        result.close()
+        db.close()
+
+        return list
+    }
+
+    fun readDataAfter10(): MutableList<Session> {
+        var list: MutableList<Session> = ArrayList()
+
+        val db = this.readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME WHERE ID NOT IN (SELECT ID FROM $TABLE_NAME LIMIT 7)"
         val result = db.rawQuery(query, null)
         if (result.moveToFirst()) {
             do {

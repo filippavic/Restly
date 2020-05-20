@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:background="@drawable/header_card"
+    android:elevation="6dp"
+    android:gravity="center_vertical">
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_exercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textAlignment="textStart"
+            android:textColor="@color/mainText"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_exercise_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_exercise"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-regular"
+            android:text="@string/main_excercise"
+            android:textColor="@color/altText"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textAlignment="textStart"
+            android:textColor="@color/mainText"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_total_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_total"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-regular"
+            android:text="@string/main_work"
+            android:textColor="@color/altText"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/mainText"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_date_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_date"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-regular"
+            android:text="@string/date"
+            android:textColor="@color/altText"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+</LinearLayout>
