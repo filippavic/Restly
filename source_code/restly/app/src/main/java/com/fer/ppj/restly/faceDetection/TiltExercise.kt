@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Size
 import android.view.TextureView
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
@@ -54,7 +55,10 @@ class TiltExercise : AppCompatActivity() {
         val preview = Preview(previewConfig)
 
         preview.setOnPreviewOutputUpdateListener { previewOutput ->
+            val parent = texture_view.parent as ViewGroup
+            parent.removeView(texture_view)
             textureView.surfaceTexture = previewOutput.surfaceTexture
+            parent.addView(texture_view, 0)
         }
 
         // Image for analysis configuration

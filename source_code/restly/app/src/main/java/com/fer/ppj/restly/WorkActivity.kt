@@ -4,10 +4,7 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.*
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Build
@@ -19,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import com.fer.ppj.restly.db.DbHandler
 import com.fer.ppj.restly.db.Session
+import com.fer.ppj.restly.faceDetection.AllExercises
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.fer.ppj.restly.faceDetection.LeftRightExercise
 import kotlinx.android.synthetic.main.activity_work.*
@@ -133,8 +131,11 @@ class WorkActivity : AppCompatActivity() {
         btn_stopWorking.setOnClickListener {
             stopTime = SystemClock.elapsedRealtime() - chrono.base
             chrono.stop()
+            val storage = this.getSharedPreferences("STORAGE", Context.MODE_PRIVATE)
+            val exerciseTime = storage.getLong("exerciseTime", 0)
+//            Log.d("exercise work", exerciseTime.toString())
             val session = Session(
-                (stopTime / 1000).toInt(),
+                (exerciseTime / 1000).toInt(),
                 (stopTime / 1000).toInt(),
                 Date(System.currentTimeMillis())
             )
@@ -146,6 +147,10 @@ class WorkActivity : AppCompatActivity() {
                 mp = null
             }
 
+            val editor: SharedPreferences.Editor = storage.edit()
+            editor.putLong("exerciseTime", 0L)
+            editor.apply()
+
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
@@ -155,7 +160,7 @@ class WorkActivity : AppCompatActivity() {
         val longPauseFreq = storage.getInt("longPauseFreq", 60)
 
 //      Ovaj dio koda sam maknul iz setOnChronometerTickListener jer se ne treba izvrsavati na svaki tick, slobodno vrni ak ti treba
-        val intent = Intent(applicationContext, LeftRightExercise::class.java)
+        val intent = Intent(applicationContext, AllExercises::class.java)
         intent.setAction(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
         val pendingIntent =

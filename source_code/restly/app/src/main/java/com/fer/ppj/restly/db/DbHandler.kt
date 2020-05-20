@@ -77,7 +77,7 @@ class DbHandler(var context: Context?) : SQLiteOpenHelper(
         var list: MutableList<Session> = ArrayList()
 
         val db = this.readableDatabase
-        val query = "SELECT * FROM $TABLE_NAME LIMIT 7"
+        val query = "SELECT * FROM $TABLE_NAME ORDER BY $COL_DATE DESC LIMIT 7"
         val result = db.rawQuery(query, null)
         if (result.moveToFirst()) {
             do {
@@ -100,7 +100,7 @@ class DbHandler(var context: Context?) : SQLiteOpenHelper(
         var list: MutableList<Session> = ArrayList()
 
         val db = this.readableDatabase
-        val query = "SELECT * FROM $TABLE_NAME WHERE ID NOT IN (SELECT ID FROM $TABLE_NAME LIMIT 7)"
+        val query = "SELECT * FROM $TABLE_NAME WHERE ID NOT IN (SELECT ID FROM $TABLE_NAME ORDER BY $COL_DATE DESC LIMIT 7) ORDER BY $COL_DATE DESC"
         val result = db.rawQuery(query, null)
         if (result.moveToFirst()) {
             do {
