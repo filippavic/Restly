@@ -4,9 +4,12 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
 import android.util.Size
 import android.view.TextureView
+import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
@@ -35,7 +38,13 @@ class FrontBackExercise : AppCompatActivity() {
 
         textureView = findViewById(R.id.texture_view)
 
-        tv_hint.text = "Pomičite glavu naprijed natrag"
+        animation_view.setAnimation(R.raw.nod)
+        Handler().postDelayed({
+            exercise_animation.startAnimation(AnimationUtils.loadAnimation(this@FrontBackExercise, R.anim.fade_out_anim))
+            exercise_animation.visibility= View.GONE
+        }, 6000)
+
+        tv_hint.text = getString(R.string.frontback_exc)
 
         // Request camera permissions
         if (isCameraPermissionGranted()) {

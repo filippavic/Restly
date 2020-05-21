@@ -47,4 +47,9 @@
     <string name="exercise_history">Povijest vježbi</string>
     <string name="more">Učitaj još...</string>
 
+    <string name="leftright_exc">Pomiči glavu lijevo-desno</string>
+    <string name="frontback_exc">Naginji glavu naprijed-natrag</string>
+    <string name="tilt_exc">Nagni glavu prema lijevom ramenu, pa prema desnom</string>
+    <string name="eyes_exc">Zatvori oči, zatim ih otvori pa podigni obrve</string>
+
 </resources>

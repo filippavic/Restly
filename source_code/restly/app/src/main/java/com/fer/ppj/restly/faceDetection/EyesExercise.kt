@@ -3,9 +3,12 @@ package com.fer.ppj.restly.faceDetection
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
 import android.util.Size
 import android.view.TextureView
+import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
@@ -33,7 +36,13 @@ class EyesExercise : AppCompatActivity() {
 
         textureView = findViewById(R.id.texture_view)
 
-        tv_hint.text = "Zatvorite oči, zatim ih otvorite pa podignite obrve"
+        animation_view.setAnimation(R.raw.eyes)
+        Handler().postDelayed({
+            exercise_animation.startAnimation(AnimationUtils.loadAnimation(this@EyesExercise, R.anim.fade_out_anim))
+            exercise_animation.visibility= View.GONE
+        }, 8000)
+
+        tv_hint.text = getString(R.string.eyes_exc)
 
         // Request camera permissions
         if (isCameraPermissionGranted()) {
