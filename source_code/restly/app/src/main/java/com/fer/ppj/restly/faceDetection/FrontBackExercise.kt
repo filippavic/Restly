@@ -100,7 +100,6 @@ class FrontBackExercise : AppCompatActivity() {
     }
 
     private fun exercise(angleX: Float){
-        Log.d("angleX", angleX.toString())
         if((angleX > 110 && prevAngle < 110)|| (angleX < 65 && prevAngle > 65)){
             exerciseProgress ++
             progress_horizontal.progress = exerciseProgress
