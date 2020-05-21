@@ -151,110 +151,112 @@ class WorkActivity : AppCompatActivity() {
             editor.putLong("exerciseTime", 0L)
             editor.apply()
 
+            stopService(Intent(this, BackgroundService::class.java))
+
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
 
-        val storage = this.getSharedPreferences("STORAGE", Context.MODE_PRIVATE)
-        val shortPauseFreq = storage.getInt("shortPauseFreq", 30)
-        val longPauseFreq = storage.getInt("longPauseFreq", 60)
-
-//      Ovaj dio koda sam maknul iz setOnChronometerTickListener jer se ne treba izvrsavati na svaki tick, slobodno vrni ak ti treba
-        val intent = Intent(applicationContext, AllExercises::class.java)
-        intent.setAction(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_LAUNCHER);
-        val pendingIntent =
-            PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-
-        val filter = IntentFilter("android.intent.CLOSE_ACTIVITY")
-//        Ovo ne treba jer sam maknul broadcast reciever, odkomentiraj ak treba
-//        registerReceiver(broadcastReceiver, filter)
-        val intentAlt = Intent("android.intent.CLOSE_ACTIVITY")
-        val pendingIntentAlt = PendingIntent.getBroadcast(this, 0, intentAlt, 0)
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            notificationChannel =
-                NotificationChannel(channelId, description, NotificationManager.IMPORTANCE_HIGH)
-            notificationChannel.enableLights(true)
-            notificationChannel.lightColor = Color.MAGENTA
-            notificationChannel.enableVibration(true)
-            notificationManager.createNotificationChannel(notificationChannel)
-
-            builder = Notification.Builder(this, channelId)
-                .setContentTitle("Vrijeme je za pauzu!")
-                .setContentText("Prošlo je " + shortPauseFreq + " minuta rada - bilo bi dobro da se malo odmoriš.")
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setColor(Color.parseColor("#764BA2"))
-                .setContentIntent(pendingIntentAlt)
-                .setCategory(NotificationCompat.CATEGORY_ALARM)
-                .setAutoCancel(true)
-
-            builderAlt = Notification.Builder(this, channelId)
-                .setContentTitle("Vrijeme je za vježbe!")
-                .setContentText("Prošlo je " + longPauseFreq + " minuta - bilo bi dobro da malo provježbaš.")
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setColor(Color.parseColor("#764BA2"))
-                .setContentIntent(pendingIntent)
-                .setCategory(NotificationCompat.CATEGORY_ALARM)
-                .setAutoCancel(true)
-        } else {
-            builder = Notification.Builder(this)
-                .setContentTitle("Vrijeme je za pauzu!")
-                .setContentText("Prošlo je " + shortPauseFreq + " minuta rada - bilo bi dobro da se malo odmoriš.")
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setColor(Color.parseColor("#764BA2"))
-                .setContentIntent(pendingIntent)
-                .setCategory(NotificationCompat.CATEGORY_ALARM)
-                .setAutoCancel(true)
-
-            builderAlt = Notification.Builder(this)
-                .setContentTitle("Vrijeme je za vježbe!")
-                .setContentText("Prošlo je " + longPauseFreq + " minuta - bilo bi dobro da malo provježbaš.")
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setColor(Color.parseColor("#764BA2"))
-                .setContentIntent(pendingIntentAlt)
-                .setCategory(NotificationCompat.CATEGORY_ALARM)
-                .setAutoCancel(true)
-        }
+//        val storage = this.getSharedPreferences("STORAGE", Context.MODE_PRIVATE)
+//        val shortPauseFreq = storage.getInt("shortPauseFreq", 30)
+//        val longPauseFreq = storage.getInt("longPauseFreq", 60)
+//
+////      Ovaj dio koda sam maknul iz setOnChronometerTickListener jer se ne treba izvrsavati na svaki tick, slobodno vrni ak ti treba
+//        val intent = Intent(applicationContext, AllExercises::class.java)
+//        intent.setAction(Intent.ACTION_MAIN);
+//        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+//        val pendingIntent =
+//            PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+//
+//        val filter = IntentFilter("android.intent.CLOSE_ACTIVITY")
+////        Ovo ne treba jer sam maknul broadcast reciever, odkomentiraj ak treba
+////        registerReceiver(broadcastReceiver, filter)
+//        val intentAlt = Intent("android.intent.CLOSE_ACTIVITY")
+//        val pendingIntentAlt = PendingIntent.getBroadcast(this, 0, intentAlt, 0)
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            notificationChannel =
+//                NotificationChannel(channelId, description, NotificationManager.IMPORTANCE_HIGH)
+//            notificationChannel.enableLights(true)
+//            notificationChannel.lightColor = Color.MAGENTA
+//            notificationChannel.enableVibration(true)
+//            notificationManager.createNotificationChannel(notificationChannel)
+//
+//            builder = Notification.Builder(this, channelId)
+//                .setContentTitle("Vrijeme je za pauzu!")
+//                .setContentText("Prošlo je " + shortPauseFreq + " minuta rada - bilo bi dobro da se malo odmoriš.")
+//                .setSmallIcon(R.mipmap.ic_launcher)
+//                .setColor(Color.parseColor("#764BA2"))
+//                .setContentIntent(pendingIntentAlt)
+//                .setCategory(NotificationCompat.CATEGORY_ALARM)
+//                .setAutoCancel(true)
+//
+//            builderAlt = Notification.Builder(this, channelId)
+//                .setContentTitle("Vrijeme je za vježbe!")
+//                .setContentText("Prošlo je " + longPauseFreq + " minuta - bilo bi dobro da malo provježbaš.")
+//                .setSmallIcon(R.mipmap.ic_launcher)
+//                .setColor(Color.parseColor("#764BA2"))
+//                .setContentIntent(pendingIntent)
+//                .setCategory(NotificationCompat.CATEGORY_ALARM)
+//                .setAutoCancel(true)
+//        } else {
+//            builder = Notification.Builder(this)
+//                .setContentTitle("Vrijeme je za pauzu!")
+//                .setContentText("Prošlo je " + shortPauseFreq + " minuta rada - bilo bi dobro da se malo odmoriš.")
+//                .setSmallIcon(R.mipmap.ic_launcher)
+//                .setColor(Color.parseColor("#764BA2"))
+//                .setContentIntent(pendingIntent)
+//                .setCategory(NotificationCompat.CATEGORY_ALARM)
+//                .setAutoCancel(true)
+//
+//            builderAlt = Notification.Builder(this)
+//                .setContentTitle("Vrijeme je za vježbe!")
+//                .setContentText("Prošlo je " + longPauseFreq + " minuta - bilo bi dobro da malo provježbaš.")
+//                .setSmallIcon(R.mipmap.ic_launcher)
+//                .setColor(Color.parseColor("#764BA2"))
+//                .setContentIntent(pendingIntentAlt)
+//                .setCategory(NotificationCompat.CATEGORY_ALARM)
+//                .setAutoCancel(true)
+//        }
 //        do tud
 
-        var prevRestType = "long"
-        var totalTime = shortPauseFreq
-        var seconds = 0.toLong()
-        var minutes = 0.toLong()
+//        var prevRestType = "long"
+//        var totalTime = shortPauseFreq
+//        var seconds = 0.toLong()
+//        var minutes = 0.toLong()
 
-        chrono.setOnChronometerTickListener {
-//            Za testiranje radimo s sekundama, u stvarnosti trebamo raditi s minutama
-//            minutes = (SystemClock.elapsedRealtime() - chrono.base)/(1000*60)
-            seconds = (SystemClock.elapsedRealtime() - chrono.base) / 1000
-
-            if (seconds.toInt() == totalTime) {
-                if (prevRestType == "long") {
-//                    Ak je prosla pauza bila duga, sljedeca je isto duga
-//                    Pokreni short rest, dodaj vrijeme od long rest
-                    action = "rest"
-                    notificationManager.notify(0, builder.build())
-                    totalTime += longPauseFreq
-                    prevRestType = "short"
-                } else {
-                    action = "exercise"
-                    notificationManager.notify(0, builderAlt.build())
-                    totalTime += shortPauseFreq
-                    prevRestType = "long"
-                }
-            }
-
-//            var currentTime: Int = ((SystemClock.elapsedRealtime() - chrono.base) / 60000).toInt()
-//            var seconds: List<String> = chrono.getText().toString().split(":")
+//        chrono.setOnChronometerTickListener {
+////            Za testiranje radimo s sekundama, u stvarnosti trebamo raditi s minutama
+////            minutes = (SystemClock.elapsedRealtime() - chrono.base)/(1000*60)
+//            seconds = (SystemClock.elapsedRealtime() - chrono.base) / 1000
 //
-//
-//            /*Vrijeme je postavljeno na 1 min/2 min zbog testiranja*/
-//            if ((currentTime == 0) && (seconds.last().equals("00")) && (currentTime % 2 == 0)) {
-//                notificationManager.notify(0, builderAlt.build())
-//            } else if ((currentTime == 0) && (seconds.last().equals("00")) && (currentTime % 1 == 0)) {
-//                notificationManager.notify(1, builder.build())
+//            if (seconds.toInt() == totalTime) {
+//                if (prevRestType == "long") {
+////                    Ak je prosla pauza bila duga, sljedeca je isto duga
+////                    Pokreni short rest, dodaj vrijeme od long rest
+//                    action = "rest"
+//                    notificationManager.notify(0, builder.build())
+//                    totalTime += longPauseFreq
+//                    prevRestType = "short"
+//                } else {
+//                    action = "exercise"
+//                    notificationManager.notify(0, builderAlt.build())
+//                    totalTime += shortPauseFreq
+//                    prevRestType = "long"
+//                }
 //            }
-        }
+//
+////            var currentTime: Int = ((SystemClock.elapsedRealtime() - chrono.base) / 60000).toInt()
+////            var seconds: List<String> = chrono.getText().toString().split(":")
+////
+////
+////            /*Vrijeme je postavljeno na 1 min/2 min zbog testiranja*/
+////            if ((currentTime == 0) && (seconds.last().equals("00")) && (currentTime % 2 == 0)) {
+////                notificationManager.notify(0, builderAlt.build())
+////            } else if ((currentTime == 0) && (seconds.last().equals("00")) && (currentTime % 1 == 0)) {
+////                notificationManager.notify(1, builder.build())
+////            }
+//        }
 
     }
 

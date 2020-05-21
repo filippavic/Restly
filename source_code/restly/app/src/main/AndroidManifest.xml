@@ -3,6 +3,7 @@
     package="com.fer.ppj.restly">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -23,6 +24,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".WorkActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity android:name=".IntroActivity" />
         <activity
@@ -35,7 +37,12 @@
         <activity android:name=".healthFragmentActivities.NutritionActivity" />
         <activity android:name=".healthFragmentActivities.WorkoutActivity" />
         <activity android:name=".healthFragmentActivities.WorkplaceActivity" />
-        <activity android:name=".faceDetection.AllExercises"/>
+        <activity android:name=".faceDetection.AllExercises" />
+
+        <service
+            android:name=".BackgroundService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>
