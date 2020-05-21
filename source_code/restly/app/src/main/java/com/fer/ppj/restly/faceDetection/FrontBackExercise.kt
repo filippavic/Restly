@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.util.Size
 import android.view.TextureView
 import android.view.View
@@ -98,11 +99,12 @@ class FrontBackExercise : AppCompatActivity() {
         return selfPermission == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun exercise(angleY: Float){
-        if((angleY > 110 && prevAngle < 110)|| (angleY < 60 && prevAngle > 60)){
+    private fun exercise(angleX: Float){
+        Log.d("angleX", angleX.toString())
+        if((angleX > 110 && prevAngle < 110)|| (angleX < 65 && prevAngle > 65)){
             exerciseProgress ++
             progress_horizontal.progress = exerciseProgress
-            prevAngle = angleY
+            prevAngle = angleX
         }
         if(noOfCalls == 0 && exerciseProgress == 10){
             noOfCalls ++
