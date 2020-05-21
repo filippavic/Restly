@@ -139,6 +139,7 @@ class HomeFragment : Fragment() {
         }
 
         view.btn_startChrono.setOnClickListener {
+            activity?.startService(Intent(activity, BackgroundService::class.java))
             startActivity(Intent(activity, WorkActivity::class.java))
             this.activity?.finish()
         }
