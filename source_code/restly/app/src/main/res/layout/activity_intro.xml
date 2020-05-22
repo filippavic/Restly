@@ -1,43 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainBackground"
-    tools:context=".IntroActivity">
+    tools:context=".IntroActivity"
+    android:orientation="vertical">
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.3" />
+
+    <ImageView
+        android:id="@+id/introSettingImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/welcome_settings"/>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.2" />
 
     <TextView
         android:id="@+id/tv_intro_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
         android:text="@string/intro_end"
-        android:textColor="@color/mainText"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"/>
+        android:textColor="@color/altText2"
+        android:textSize="21sp"
+        android:fontFamily="@string/font_family_medium"
+        android:layout_gravity="center" />
 
-    <EditText
-        android:layout_below="@+id/tv_intro_end"
-        android:id="@+id/et_name"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/header_card"
-        android:hint="@string/your_name"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:elevation="9dp"
-        android:inputType="textPersonName"/>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
 
     <LinearLayout
-        android:layout_below="@+id/et_name"
+        android:id="@+id/ll_et_name"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:layout_marginStart="20sp"
+        android:layout_marginEnd="20sp"
+        android:weightSum="10">
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="10"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10sp"
+            android:background="@drawable/header_card"
+            android:hint="@string/your_name"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:elevation="3dp"
+            android:inputType="textPersonName"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.3" />
+
+    <LinearLayout
         android:id="@+id/ll_pause_length"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="50sp"
+        android:layout_height="50dp"
+
         android:layout_marginStart="30sp"
         android:layout_marginEnd="30sp"
         android:gravity="center_vertical"
@@ -47,16 +85,18 @@
             android:layout_marginStart="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/mainText"
+            android:textColor="@color/altText2"
+            android:fontFamily="@string/font_family_medium"
             android:text="@string/pause_length"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:layout_weight="7"/>
 
         <EditText
             android:id="@+id/et_pause_duration"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:background="@drawable/header_card"
+            android:elevation="3dp"
             android:layout_weight="2"
             android:gravity="center"
             android:inputType="number"/>
@@ -65,16 +105,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/min"
-            android:textColor="@color/mainText"
+            android:textColor="@color/altText2"
             android:layout_weight="1"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@+id/ll_pause_length"
         android:id="@+id/ll_short_pause_freq"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="10sp"
         android:layout_marginStart="30sp"
         android:layout_marginEnd="30sp"
@@ -85,16 +124,18 @@
             android:layout_marginStart="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/mainText"
+            android:textColor="@color/altText2"
+            android:fontFamily="@string/font_family_medium"
             android:text="@string/short_pause_freq"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:layout_weight="7"/>
 
         <EditText
             android:id="@+id/et_short_pause_freq"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:background="@drawable/header_card"
+            android:elevation="3dp"
             android:layout_weight="2"
             android:gravity="center"
             android:inputType="number"/>
@@ -103,16 +144,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text=" min"
-            android:textColor="@color/mainText"
+            android:textColor="@color/altText2"
             android:layout_weight="1"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@+id/ll_short_pause_freq"
         android:id="@+id/ll_long_pause_freq"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="10sp"
         android:layout_marginStart="30sp"
         android:layout_marginEnd="30sp"
@@ -123,16 +163,18 @@
             android:layout_marginStart="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/mainText"
+            android:textColor="@color/altText2"
+            android:fontFamily="@string/font_family_medium"
             android:text="@string/long_pause_freq"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:layout_weight="7"/>
 
         <EditText
             android:id="@+id/et_long_pause_freq"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:background="@drawable/header_card"
+            android:elevation="3dp"
             android:gravity="center"
             android:layout_weight="2"
             android:inputType="number"/>
@@ -141,16 +183,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text=" min"
-            android:textColor="@color/mainText"
+            android:textColor="@color/altText2"
             android:layout_weight="1"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@+id/ll_long_pause_freq"
         android:id="@+id/ll_daily_goal"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="10sp"
         android:layout_marginStart="30sp"
         android:layout_marginEnd="30sp"
@@ -161,16 +202,18 @@
             android:layout_marginStart="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/mainText"
+            android:textColor="@color/altText2"
+            android:fontFamily="@string/font_family_medium"
             android:text="@string/daily_goal"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:layout_weight="7"/>
 
         <EditText
             android:id="@+id/et_daily_goal"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:background="@drawable/header_card"
+            android:elevation="3dp"
             android:gravity="center"
             android:layout_weight="2"
             android:inputType="number"/>
@@ -179,18 +222,20 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text=" min"
-            android:textColor="@color/mainText"
+            android:textColor="@color/altText2"
             android:layout_weight="1"/>
 
     </LinearLayout>
 
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
     <Button
-        android:layout_below="@id/ll_daily_goal"
         android:id="@+id/btn_finish_intro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true"
         android:background="@drawable/main_btn_bg"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
@@ -199,4 +244,9 @@
         android:textColor="@color/mainBackground"
         android:layout_gravity="center" />
 
-</RelativeLayout>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3" />
+
+</LinearLayout>

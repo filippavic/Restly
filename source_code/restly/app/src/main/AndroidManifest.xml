@@ -27,6 +27,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity android:name=".IntroActivity" />
+        <activity android:name=".WelcomeActivity" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
