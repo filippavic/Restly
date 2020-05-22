@@ -8,6 +8,7 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Handler
 import android.os.IBinder
+import android.util.Log
 import androidx.annotation.Nullable
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
@@ -25,6 +26,7 @@ class BackgroundService : Service() {
     val handler = Handler()
     private var action = ""
     private var start = 0L
+    private val context = this
 
     @Nullable
     override fun onBind(intent: Intent): IBinder? {
@@ -61,16 +63,25 @@ class BackgroundService : Service() {
 
 //                Log.d("seconds", seconds.toString())
                 if (seconds.toInt() == totalTime) {
+
+                    val storage = context.getSharedPreferences("STORAGE", Context.MODE_PRIVATE)
+                    val showNotification = storage.getBoolean("showNotification", true)
+                    Log.d("showNotification", showNotification.toString())
+
                     if (prevRestType == "long") {
 //                    Ak je prosla pauza bila duga, sljedeca je isto duga
 //                    Pokreni short rest, dodaj vrijeme od long rest
                         action = "rest"
-                        notificationRest()
+                        if (showNotification) {
+                            notificationRest()
+                        }
                         totalTime += longPauseFreq
                         prevRestType = "short"
                     } else {
                         action = "exercise"
-                        notificationExercise()
+                        if (showNotification) {
+                            notificationExercise()
+                        }
                         totalTime += shortPauseFreq
                         prevRestType = "long"
                     }
@@ -92,7 +103,7 @@ class BackgroundService : Service() {
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         val intent = Intent(this, WorkActivity::class.java)
-        intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TOP  or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
 
         val pendingIntent = PendingIntent.getActivity(
             this,
@@ -184,7 +195,8 @@ class BackgroundService : Service() {
                 ""
             }
         val notificationIntent = Intent(this, WorkActivity::class.java)
-        notificationIntent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TOP  or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        notificationIntent.flags =
+            (Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
 //        notificationIntent.action = (Intent.ACTION_MAIN)
 //        notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER)
         val pendingIntent = PendingIntent.getActivity(

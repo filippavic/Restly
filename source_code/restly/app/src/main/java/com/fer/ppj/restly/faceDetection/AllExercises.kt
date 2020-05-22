@@ -18,6 +18,11 @@ class AllExercises: AppCompatActivity() {
         start = System.currentTimeMillis()
         Log.d("allexercies start", start.toString())
 
+        val storage = this.getSharedPreferences("STORAGE", Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = storage.edit()
+        editor.putBoolean("showNotification", false)
+        editor.apply()
+
         startActivity(Intent(this, LeftRightExercise::class.java))
     }
 
@@ -31,6 +36,7 @@ class AllExercises: AppCompatActivity() {
 //        Log.d("exercises", time.toString())
         val editor: SharedPreferences.Editor = storage.edit()
         editor.putLong("exerciseTime", time)
+        editor.putBoolean("showNotification", true)
         editor.apply()
     }
 
