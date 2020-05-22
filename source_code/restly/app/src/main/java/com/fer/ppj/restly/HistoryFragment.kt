@@ -2,8 +2,6 @@ package com.fer.ppj.restly
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +9,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.fer.ppj.restly.db.DbHandler
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.container
 import kotlinx.android.synthetic.main.fragment_history.*
 import kotlinx.android.synthetic.main.fragment_history.view.*
 import java.sql.Date
@@ -58,9 +54,9 @@ class HistoryFragment : Fragment() {
         val addView = layoutInflater.inflate(R.layout.histroy_card, null)
         addView.id = dataId
         val tvExercise = addView.findViewById(R.id.tv_exercise) as TextView
-        tvExercise.text = ((exerciseTime/60).toString() + " min")
+        tvExercise.text = (kotlin.math.ceil(exerciseTime.toDouble() / 60).toInt().toString() + " min")
         val tvTotal = addView.findViewById(R.id.tv_total) as TextView
-        tvTotal.text = ((totalTime/60).toString() + " min")
+        tvTotal.text = (kotlin.math.ceil(totalTime.toDouble() / 60).toInt().toString() + " min")
         val tvDate = addView.findViewById(R.id.tv_date) as TextView
         tvDate.text = date.toString()
         val layoutParams = LinearLayout.LayoutParams(
