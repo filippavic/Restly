@@ -38,7 +38,8 @@
             android:layout_marginTop="50dp"
             android:layout_marginBottom="50dp"
             android:textAllCaps="false"
-            android:text="@string/more" />
+            android:text="@string/more"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 

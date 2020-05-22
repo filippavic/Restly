@@ -39,6 +39,11 @@ class HistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val db = DbHandler(activity)
+        val count = db.getDataCount()
+        if (count > 7){
+            btn_more.visibility = View.VISIBLE
+        }
     }
 
     private fun historyCard(

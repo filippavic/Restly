@@ -118,4 +118,22 @@ class DbHandler(var context: Context?) : SQLiteOpenHelper(
 
         return list
     }
+
+    fun getDataCount(): Int {
+        var count = 0
+
+        val db = this.readableDatabase
+        val query = "SELECT COUNT(ID) FROM $TABLE_NAME"
+        val result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                count = result.getInt(0)
+            } while (result.moveToNext())
+        }
+
+        result.close()
+        db.close()
+        return count
+
+    }
 }
