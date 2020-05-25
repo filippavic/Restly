@@ -27,11 +27,11 @@
     <string name="circle">Circle</string>
     <string name="pause_length">Trajanje pauze</string>
     <string name="min">" min"</string>
-    <string name="short_pause_freq">Učestalost kratke pause</string>
+    <string name="short_pause_freq">Učestalost kratke pauze</string>
     <string name="long_pause_freq">Učestalost duge pauze</string>
     <string name="daily_goal">Dnevni cilj</string>
     <string name="restly">Restly</string>
-    <string name="intro_end">Za kraj, zamolili bi te za par stvari:</string>
+    <string name="intro_end">Za kraj, zamolili bismo te za par stvari:</string>
     <string name="your_name">Tvoje ime</string>
     <string name="finish">Završi</string>
 
@@ -51,5 +51,9 @@
     <string name="frontback_exc">Naginji glavu naprijed-natrag</string>
     <string name="tilt_exc">Nagni glavu prema lijevom ramenu, pa prema desnom</string>
     <string name="eyes_exc">Zatvori oči, zatim ih otvori pa podigni obrve</string>
+
+    <string name="intro_continue">Nastavi</string>
+    <string name="skip">Preskoči uvod</string>
+    <string name="restly_icon">Restly icon</string>
 
 </resources>

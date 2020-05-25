@@ -7,6 +7,7 @@
 
     <color name="mainText">#000000</color>
     <color name="altText">#696969</color>
+    <color name="altText2">#3E3E3E</color>
 
     <color name="mainBackground">#F1F1F1</color>
     <color name="altBackground">#FFFFFF</color>
