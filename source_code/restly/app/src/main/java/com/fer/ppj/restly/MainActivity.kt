@@ -1,5 +1,7 @@
 package com.fer.ppj.restly
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +42,21 @@ class MainActivity : AppCompatActivity() {
 
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
+    }
+
+    override fun onBackPressed() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Izlazak iz aplikacije")
+        builder.setMessage("Jeste li sigurni da želite izaći iz aplikacije?")
+
+        builder.setPositiveButton("Da") { _, _ ->
+            finish()
+        }
+
+        builder.setNegativeButton("Ne") { _, _ ->
+        }
+
+        builder.show()
     }
 
     private fun initFragments() {

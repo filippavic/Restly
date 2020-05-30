@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 
 class SplashActivity : Activity() {
-    private val SPLASH_DISPLAY_LENGTH = 1000
+    private val SPLASH_DISPLAY_LENGTH = 500
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
