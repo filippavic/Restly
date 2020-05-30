@@ -23,6 +23,7 @@ class BackgroundService : Service() {
     private val description = ""
     var shortPauseFreq = 0
     var longPauseFreq = 0
+    var pauseDuration = 0
     val handler = Handler()
     private var action = ""
     private var start = 0L
@@ -39,6 +40,7 @@ class BackgroundService : Service() {
         val storage = this.getSharedPreferences("STORAGE", Context.MODE_PRIVATE)
         shortPauseFreq = storage.getInt("shortPauseFreq", 30)
         longPauseFreq = storage.getInt("longPauseFreq", 60)
+        pauseDuration = storage.getInt("pauseDuration", 5)
 
         start = System.currentTimeMillis()
     }
@@ -51,6 +53,7 @@ class BackgroundService : Service() {
 
         var prevRestType = "long"
         var totalTime = shortPauseFreq
+        var pauseTime = 0
         var seconds = 0.toLong()
         var minutes = 0.toLong()
 
@@ -75,6 +78,7 @@ class BackgroundService : Service() {
                         if (showNotification) {
                             notificationRest()
                         }
+                        pauseTime = totalTime + pauseDuration
                         totalTime += longPauseFreq
                         prevRestType = "short"
                     } else {
@@ -84,6 +88,14 @@ class BackgroundService : Service() {
                         }
                         totalTime += shortPauseFreq
                         prevRestType = "long"
+                    }
+                }
+
+                if (seconds.toInt() == pauseTime && prevRestType == "short"){
+                    val storage = context.getSharedPreferences("STORAGE", Context.MODE_PRIVATE)
+                    val showNotification = storage.getBoolean("showNotification", true)
+                    if(showNotification){
+                        notificationPauseEnd()
                     }
                 }
 
@@ -184,6 +196,51 @@ class BackgroundService : Service() {
                 .setAutoCancel(true)
         }
         notificationManager.notify(4321, builder.build())
+
+    }
+
+    private fun notificationPauseEnd() {
+        notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        val intent = Intent(this, WorkActivity::class.java)
+        intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+
+        val pendingIntent = PendingIntent.getActivity(
+            this,
+            0, intent, PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationChannel = NotificationChannel(
+                channelId, description, NotificationManager.IMPORTANCE_HIGH
+            )
+            notificationChannel.name = "alertsChannel"
+            notificationChannel.enableLights(true)
+            notificationChannel.lightColor = Color.GREEN
+            notificationChannel.enableVibration(false)
+            notificationManager.createNotificationChannel(notificationChannel)
+
+            builder = Notification.Builder(this, channelId)
+                .setContentTitle("Pauza je gotova!")
+                .setContentText("Prošlo je $pauseDuration minuta pauze - možete nastaviti s radom.")
+                .setColor(Color.parseColor("#5C5FBC"))
+                .setSmallIcon(R.mipmap.sym_def_app_icon)
+                .setContentIntent(pendingIntent)
+                .setCategory(NotificationCompat.CATEGORY_ALARM)
+                .setAutoCancel(true)
+        } else {
+
+            builder = Notification.Builder(this)
+                .setContentTitle("Pauza je gotova!")
+                .setContentText("Prošlo je $pauseDuration minuta pauze - možete nastaviti s radom.")
+                .setColor(Color.parseColor("#5C5FBC"))
+                .setSmallIcon(R.mipmap.sym_def_app_icon)
+                .setContentIntent(pendingIntent)
+                .setCategory(NotificationCompat.CATEGORY_ALARM)
+                .setAutoCancel(true)
+        }
+        notificationManager.notify(1234, builder.build())
 
     }
 
