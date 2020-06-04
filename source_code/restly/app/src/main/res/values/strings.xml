@@ -28,7 +28,7 @@
     <string name="pause_length">Trajanje pauze</string>
     <string name="min">" min"</string>
     <string name="short_pause_freq">Učestalost kratke pauze</string>
-    <string name="long_pause_freq">Učestalost duge pauze</string>
+    <string name="long_pause_freq">Učestalost vježbanja</string>
     <string name="daily_goal">Dnevni cilj</string>
     <string name="restly">Restly</string>
     <string name="intro_end">Za kraj, zamolili bismo te za par stvari:</string>
@@ -55,5 +55,24 @@
     <string name="intro_continue">Nastavi</string>
     <string name="skip">Preskoči uvod</string>
     <string name="restly_icon">Restly icon</string>
+    <string name="pause">Pauza traje još...</string>
+
+    <string-array name="pause_duration">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+    </string-array>
+
+    <string-array name="short_pause">
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+    </string-array>
+
+    <string-array name="long_pause">
+        <item>45</item>
+        <item>60</item>
+        <item>75</item>
+    </string-array>
 
 </resources>

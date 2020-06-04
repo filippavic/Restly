@@ -3,22 +3,21 @@ package com.fer.ppj.restly
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.*
-import android.graphics.Color
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
+import android.graphics.drawable.AnimationDrawable
 import android.media.MediaPlayer
-import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
-import android.util.Log
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.fer.ppj.restly.db.DbHandler
 import com.fer.ppj.restly.db.Session
-import com.fer.ppj.restly.faceDetection.AllExercises
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.fer.ppj.restly.faceDetection.LeftRightExercise
 import kotlinx.android.synthetic.main.activity_work.*
 import kotlinx.android.synthetic.main.music_sheet_layout.*
 import java.sql.Date
@@ -49,6 +48,11 @@ class WorkActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_work)
         var db = DbHandler(this)
+
+        val animationDrawable =
+            workContainer.background as AnimationDrawable
+        animationDrawable.setExitFadeDuration(5000)
+        animationDrawable.start()
 
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 

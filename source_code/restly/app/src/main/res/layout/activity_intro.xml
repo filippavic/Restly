@@ -61,7 +61,7 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:elevation="3dp"
-            android:inputType="textPersonName"
+            android:inputType="textPersonName|textCapWords"
             android:layout_gravity="center"/>
 
     </LinearLayout>
@@ -91,15 +91,24 @@
             android:textSize="20sp"
             android:layout_weight="7"/>
 
-        <EditText
-            android:id="@+id/et_pause_duration"
+<!--        <EditText-->
+<!--            android:id="@+id/et_pause_duration"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:background="@drawable/header_card"-->
+<!--            android:elevation="3dp"-->
+<!--            android:layout_weight="2"-->
+<!--            android:gravity="center"-->
+<!--            android:inputType="number"/>-->
+
+        <Spinner
+            android:id="@+id/sp_pause_duration"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:background="@drawable/header_card"
-            android:elevation="3dp"
+            android:entries="@array/pause_duration"
             android:layout_weight="2"
-            android:gravity="center"
-            android:inputType="number"/>
+            android:gravity="center" />
 
         <TextView
             android:layout_width="0dp"
@@ -130,15 +139,24 @@
             android:textSize="20sp"
             android:layout_weight="7"/>
 
-        <EditText
-            android:id="@+id/et_short_pause_freq"
+<!--        <EditText-->
+<!--            android:id="@+id/et_short_pause_freq"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:background="@drawable/header_card"-->
+<!--            android:elevation="3dp"-->
+<!--            android:layout_weight="2"-->
+<!--            android:gravity="center"-->
+<!--            android:inputType="number"/>-->
+
+        <Spinner
+            android:id="@+id/sp_short_pause_freq"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:background="@drawable/header_card"
-            android:elevation="3dp"
+            android:entries="@array/short_pause"
             android:layout_weight="2"
-            android:gravity="center"
-            android:inputType="number"/>
+            android:gravity="center" />
 
         <TextView
             android:layout_width="0dp"
@@ -169,15 +187,24 @@
             android:textSize="20sp"
             android:layout_weight="7"/>
 
-        <EditText
-            android:id="@+id/et_long_pause_freq"
+<!--        <EditText-->
+<!--            android:id="@+id/et_long_pause_freq"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:background="@drawable/header_card"-->
+<!--            android:elevation="3dp"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_weight="2"-->
+<!--            android:inputType="number"/>-->
+
+        <Spinner
+            android:id="@+id/sp_long_pause_freq"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:background="@drawable/header_card"
-            android:elevation="3dp"
-            android:gravity="center"
+            android:entries="@array/long_pause"
             android:layout_weight="2"
-            android:inputType="number"/>
+            android:gravity="center" />
 
         <TextView
             android:layout_width="0dp"
@@ -214,7 +241,8 @@
             android:layout_height="35dp"
             android:background="@drawable/header_card"
             android:elevation="3dp"
-            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:layout_weight="2"
             android:inputType="number"/>
 

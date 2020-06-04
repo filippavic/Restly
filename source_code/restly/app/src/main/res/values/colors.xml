@@ -18,6 +18,12 @@
     <color name="colorAltGradientStart">#B066EA</color>
     <color name="colorAltGradientEnd">#C26FCF</color>
 
+    <color name="colorGradientStartOrange">#FDBE42</color>
+    <color name="colorGradientEndOrange">#FFA48F</color>
+
+    <color name="colorAltGradientStartMagenta">#FFA48F</color>
+    <color name="colorAltGradientEndMagenta">#FD88E0</color>
+
     <color name="pastelGreen">#77DDAA</color>
     <color name="pastelOrange">#FFC87A</color>
 </resources>

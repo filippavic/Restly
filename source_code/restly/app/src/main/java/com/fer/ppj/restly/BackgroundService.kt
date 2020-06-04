@@ -58,11 +58,34 @@ class BackgroundService : Service() {
         var minutes = 0.toLong()
 
         startForeground()
+
+        val notificationIntent = Intent(this, WorkActivity::class.java)
+        notificationIntent.flags =
+            (Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+
+        val pendingIntent = PendingIntent.getActivity(
+            this, 0,
+            notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
         handler.postDelayed(object : Runnable {
             override fun run() {
 
 //                minutes = (System.currentTimeMillis() - start)/(1000*60)
                 seconds = (System.currentTimeMillis() - start) / 1000
+
+                startForeground(
+                    NOTIF_ID, NotificationCompat.Builder(
+                        context,
+                        "bckServ"
+                    )
+                        .setOngoing(true)
+                        .setSmallIcon(R.mipmap.sym_def_app_icon)
+                        .setContentTitle("Radiš već $seconds s")
+                        .setContentText("Pritisni da bi se vratio u aplikaciju")
+                        .setContentIntent(pendingIntent)
+                        .build()
+                )
 
 //                Log.d("seconds", seconds.toString())
                 if (seconds.toInt() == totalTime) {
@@ -114,7 +137,7 @@ class BackgroundService : Service() {
         notificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        val intent = Intent(this, WorkActivity::class.java)
+        val intent = Intent(this, RestActivity::class.java)
         intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
 
         val pendingIntent = PendingIntent.getActivity(
