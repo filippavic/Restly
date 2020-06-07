@@ -2,6 +2,7 @@ package com.fer.ppj.restly
 
 import android.content.Context
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,7 +65,12 @@ class HistoryFragment : Fragment() {
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
         layoutParams.setMargins(20, 0, 20, 25)
-        layoutParams.height = 100
+        val dimensionInDp = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            65F,
+            resources.displayMetrics
+        ).toInt()
+        layoutParams.height = dimensionInDp
         addView.layoutParams = layoutParams
 
         view.history_container.addView(addView)

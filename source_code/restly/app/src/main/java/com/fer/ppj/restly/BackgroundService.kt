@@ -4,6 +4,7 @@ import android.R
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
 import android.os.Handler
@@ -19,7 +20,7 @@ class BackgroundService : Service() {
     lateinit var notificationManager: NotificationManager
     lateinit var notificationChannel: NotificationChannel
     lateinit var builder: Notification.Builder
-    private val channelId = "com.fer.greenhouse"
+    private val channelId = "com.fer.ppj.restly"
     private val description = ""
     var shortPauseFreq = 0
     var longPauseFreq = 0
@@ -99,6 +100,10 @@ class BackgroundService : Service() {
 //                    Pokreni short rest, dodaj vrijeme od long rest
                         action = "rest"
                         if (showNotification) {
+                            val timeShortRest = System.currentTimeMillis()
+                            val editor: SharedPreferences.Editor = storage.edit()
+                            editor.putLong("timeShortRest", timeShortRest)
+                            editor.apply()
                             notificationRest()
                         }
                         pauseTime = totalTime + pauseDuration

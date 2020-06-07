@@ -26,7 +26,10 @@ class RestActivity : AppCompatActivity() {
         setContentView(R.layout.activity_rest)
 
         val storage = this.getSharedPreferences("STORAGE", Context.MODE_PRIVATE)
-        val pauseDuration = storage.getInt("pauseDuration", 5)
+        var pauseDuration = storage.getInt("pauseDuration", 5)
+        val timeShortRest = storage.getLong("timeShortRest", 0L)
+        val currentTime = System.currentTimeMillis()
+        pauseDuration -= ((currentTime - timeShortRest) / 1000).toInt()
 
         val animationDrawable =
             workContainerRest.background as AnimationDrawable

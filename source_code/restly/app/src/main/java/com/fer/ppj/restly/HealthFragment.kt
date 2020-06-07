@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.fer.ppj.restly.faceDetection.LeftRightExercise
 import com.fer.ppj.restly.healthFragmentActivities.NutritionActivity
@@ -34,9 +35,9 @@ class HealthFragment : Fragment() {
         view.btn_workplace.setOnClickListener {
             startActivity(Intent(activity, WorkplaceActivity::class.java))
         }
-        /*view.btn_nutrition.setOnClickListener {
+        view.btn_nutrition.setOnClickListener {
             startActivity(Intent(activity, NutritionActivity::class.java))
-        }*/
+        }
         view.btn_workout.setOnClickListener {
             startActivity(Intent(activity, WorkoutActivity::class.java))
         }

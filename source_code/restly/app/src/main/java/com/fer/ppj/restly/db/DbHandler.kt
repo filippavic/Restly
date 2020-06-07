@@ -43,11 +43,6 @@ class DbHandler(var context: Context?) : SQLiteOpenHelper(
         var result = db.insert(TABLE_NAME, null, contentValues)
         if (result == -1.toLong())
             Toast.makeText(context, "Failed inserting to db", Toast.LENGTH_SHORT).show()
-        else Toast.makeText(
-            context,
-            "Succeeded inserting to db: " + session.total_time + "s",
-            Toast.LENGTH_SHORT
-        ).show()
     }
 
     fun readData(): MutableList<Session> {
