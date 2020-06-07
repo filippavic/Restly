@@ -68,12 +68,12 @@ class WorkActivity : AppCompatActivity() {
             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED)
         }
 
-        btn_sound_ok.setOnClickListener{
-            //ovo crasha activity, don't know why
-            //bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN)
-            Toast.makeText(applicationContext, "Povuci izbornik prema dolje", Toast.LENGTH_LONG)
-                .show()
-        }
+//        btn_sound_ok.setOnClickListener{
+//            //ovo crasha activity, don't know why
+//            //bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN)
+//            Toast.makeText(applicationContext, "Povuci izbornik prema dolje", Toast.LENGTH_LONG)
+//                .show()
+//        }
 
         btn_sea_sound.setOnClickListener {
             if (mp != null) {
