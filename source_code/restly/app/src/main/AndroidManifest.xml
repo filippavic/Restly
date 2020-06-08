@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,14 +35,22 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".faceDetection.LeftRightExercise" />
-        <activity android:name=".faceDetection.TiltExercise" />
-        <activity android:name=".faceDetection.EyesExercise" />
-        <activity android:name=".faceDetection.FrontBackExercise" />
-        <activity android:name=".healthFragmentActivities.NutritionActivity" />
-        <activity android:name=".healthFragmentActivities.WorkoutActivity" />
-        <activity android:name=".healthFragmentActivities.WorkplaceActivity" />
-        <activity android:name=".faceDetection.AllExercises" />
+        <activity android:name=".faceDetection.LeftRightExercise"
+            android:screenOrientation="portrait" />
+        <activity android:name=".faceDetection.TiltExercise"
+            android:screenOrientation="portrait" />
+        <activity android:name=".faceDetection.EyesExercise"
+            android:screenOrientation="portrait" />
+        <activity android:name=".faceDetection.FrontBackExercise"
+            android:screenOrientation="portrait" />
+        <activity android:name=".healthFragmentActivities.NutritionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".healthFragmentActivities.WorkoutActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".healthFragmentActivities.WorkplaceActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".faceDetection.AllExercises"
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".BackgroundService"
